@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <title>Drink menu</title>
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="../styles/drinks.css" />
+</head>
+<body>
+  <main class="products" aria-labelledby="drink-menu-title">
+    <header class="container">
+      <h1 class="title" id="drink-menu-title">Drink menu</h1>
+      <p class="description">Tap to select. You can choose multiple.</p>
+    </header>
+
+    <section class="list" aria-label="Drink options">
+      <!-- Populated by drinks.js -->
+    </section>
+
+    <img class="vector" src="img/vector-200.svg" alt="" aria-hidden="true" />
+  </main>
+
+  <script type="module" src="../js/showDrinks.js"></script>
+  <script type="module" src="../js/index.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
