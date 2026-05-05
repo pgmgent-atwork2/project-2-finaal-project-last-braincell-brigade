@@ -23,7 +23,8 @@
 
 .products .title {
   position: relative;
-  width: 520px;
+  max-width: 520px;
+  width: 100%;
   margin-top: -1px;
   font-family: "Roboto-Bold", Helvetica;
   font-weight: 700;
@@ -36,7 +37,8 @@
 
 .products .description {
   position: relative;
-  width: 520px;
+  max-width: 520px;
+  width: 100%;
   font-family: "Roboto-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
@@ -46,14 +48,79 @@
   line-height: 24px;
 }
 
+.products .content-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+  width: 100%;
+}
+
+.products .sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+}
+
+.products .sidebar-label {
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #00000066;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
+}
+
+.products .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.products .category-button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  font-family: "Roboto-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #000000;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.products .category-button:hover {
+  background: #00000008;
+}
+
+.products .category-button.active {
+  background: #0000000d;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+}
+
+.products .category-button:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
 .products .list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  flex: 1;
+  min-width: 0;
 }
 
 .products .card {
@@ -63,9 +130,8 @@
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid;
-  border-color: #0000001a;
-  min-width: 0; /* prevents grid blowout */
+  border: 1px solid #0000001a;
+  min-width: 0;
 }
 
 .products .image-container {
@@ -123,7 +189,7 @@
 .products .div {
   position: relative;
   align-self: stretch;
-  margin-top: -1px;
+  margin: 0;
   font-family: "Roboto-Regular", Helvetica;
   font-weight: 400;
   font-size: 16px;
@@ -135,6 +201,7 @@
 .products .subtitle {
   position: relative;
   align-self: stretch;
+  margin: 0;
   font-family: "Roboto-Medium", Helvetica;
   font-weight: 500;
   color: #000000;
@@ -201,24 +268,35 @@ body {
   margin: 0 auto;
 }
 
-.products .title,
-.products .description {
-  max-width: 520px;
-  width: 100%;
-}
-
-.products .div {
-  margin: 0;
-}
-
-.products .subtitle {
-  margin: 0;
-}
 
 @media (max-width: 900px) {
   .products {
     padding: 40px 24px;
     gap: 40px;
+  }
+
+  .products .content-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .products .sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .products .sidebar-label {
+    margin-bottom: 0;
+  }
+
+  .products .categories {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .products .category-button {
+    width: auto;
   }
 
   .products .list {

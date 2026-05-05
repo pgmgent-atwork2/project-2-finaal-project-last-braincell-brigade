@@ -1,5 +1,7 @@
 import { getDrinks } from "../api/drinks.js";
 
+let allDrinks = [];
+
 function createDrinkCard(drink) {
   const article = document.createElement('article');
   article.className = 'card';
@@ -21,29 +23,26 @@ function createDrinkCard(drink) {
   return article;
 }
 
-function renderDrinks(drinks) {
+export function renderDrinks(categoryId = null) {
   const list = document.querySelector('.list');
+  if (!list) return;
 
-  if (!list) {
-    console.error('Could not find .list container');
-    return;
-  }
+  const filtered = categoryId
+    ? allDrinks.filter(d => d.category_id === categoryId)
+    : allDrinks;
 
-  if (!Array.isArray(drinks) || drinks.length === 0) {
+  if (filtered.length === 0) {
     list.innerHTML = '<p class="no-drinks">No drinks found.</p>';
     return;
   }
 
   list.innerHTML = '';
-
-  drinks.forEach(drink => {
-    list.appendChild(createDrinkCard(drink));
-  });
+  filtered.forEach(drink => list.appendChild(createDrinkCard(drink)));
 }
 
 async function loadDrinks() {
-  const drinks = await getDrinks();
-  renderDrinks(drinks || []);
+  allDrinks = await getDrinks() || [];
+  renderDrinks();
 }
 
 loadDrinks();
