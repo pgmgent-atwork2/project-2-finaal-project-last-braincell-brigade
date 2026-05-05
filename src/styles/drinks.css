@@ -48,8 +48,6 @@
   line-height: 24px;
 }
 
-/* Sidebar + list wrapper */
-
 .products .content-layout {
   display: flex;
   align-items: flex-start;
@@ -57,8 +55,6 @@
   align-self: stretch;
   width: 100%;
 }
-
-/* Sidebar */
 
 .products .sidebar {
   display: flex;
@@ -119,8 +115,6 @@
   outline-offset: 2px;
 }
 
-/* Drink grid */
-
 .products .list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -128,8 +122,6 @@
   flex: 1;
   min-width: 0;
 }
-
-/* Drink card */
 
 .products .card {
   display: flex;
@@ -266,8 +258,6 @@
   object-fit: cover;
 }
 
-/* Base */
-
 body {
   display: flex;
   justify-content: center;
@@ -278,7 +268,6 @@ body {
   margin: 0 auto;
 }
 
-/* Tablet */
 
 @media (max-width: 900px) {
   .products {
@@ -315,8 +304,6 @@ body {
     gap: 24px;
   }
 }
-
-/* Mobile */
 
 @media (max-width: 600px) {
   .products {
