@@ -210,6 +210,93 @@
   line-height: 28px;
 }
 
+.products .bill {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+  border: 1px solid #0000001a;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.products .bill-title {
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.products .bill-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.products .bill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.products .bill-item-name {
+  flex: 1;
+}
+
+.products .bill-item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: #00000066;
+  padding: 0;
+}
+
+.products .bill-item-remove:hover {
+  color: #000000;
+}
+
+.products .bill-total {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 15px;
+  border-top: 1px solid #0000001a;
+  padding-top: 12px;
+}
+
+.products .bill-close-btn {
+  width: 100%;
+  padding: 10px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.products .bill-close-btn:hover {
+  background: #333333;
+}
+
+.products .bill-empty {
+  font-size: 14px;
+  color: #00000066;
+  margin: 0;
+}
+
 .products .icon-buttons {
   display: flex;
   gap: 8px;
@@ -249,15 +336,6 @@
   border-radius: 4px;
 }
 
-.products .vector {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  height: 1px;
-  object-fit: cover;
-}
-
 body {
   display: flex;
   justify-content: center;
@@ -268,6 +346,16 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 1100px) {
+  .products .bill {
+    width: 100%;
+    position: static;
+  }
+
+  .products .content-layout {
+    flex-wrap: wrap;
+  }
+}
 
 @media (max-width: 900px) {
   .products {
