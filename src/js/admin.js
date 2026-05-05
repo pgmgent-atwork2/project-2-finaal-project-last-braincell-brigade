@@ -1,9 +1,9 @@
 import { requireAuth } from '../utils/authGuard.js';
 
 async function init() {
-  await requireAuth();
-
-  console.log('User is authenticated');
+  await requireAdmin();
+  
+  console.log('Admin access granted');
 }
 
 init();

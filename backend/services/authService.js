@@ -30,3 +30,14 @@ export async function getCurrentUser() {
     const { data } = await supabase.auth.getUser();
     return data.user;
 }
+
+export async function getUserProfile(userId) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', userId)
+    .single();
+
+  if (error) throw error;
+  return data;
+}
