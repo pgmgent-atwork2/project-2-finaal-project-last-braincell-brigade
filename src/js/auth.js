@@ -39,13 +39,15 @@ if (signinForm) {
   });
 }
 
-logoutBtn.addEventListener("click", function() {
-  signOut()
-    .then(() => {
-      alert('Signed out successfully!');
-      window.location.href = '/src/views/login.html';
-    })
-    .catch((err) => {
-      alert(err.message);
-    });
-});
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function() {
+    signOut()
+      .then(() => {
+        alert('Signed out successfully!');
+        window.location.href = '/src/views/login.html';
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  });
+}
