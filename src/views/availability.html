@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Player Availability — Ping Pong Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/reset.css" />
+  <link rel="stylesheet" href="../styles/globals.css" />
+  <link rel="stylesheet" href="../styles/availability.css" />
+</head>
+<body>
+  <div class="page">
+
+    <header class="top-bar">
+      <div class="logo-mark" aria-hidden="true">🏓</div>
+      <span class="brand">Ping Pong Hub</span>
+      <nav class="navigation" aria-label="Primary">
+        <a class="tab" href="./home.html">Home</a>
+        <a class="tab" href="#">Matches</a>
+        <a class="tab active" href="#" aria-current="page">Availability</a>
+        <a class="tab" href="./drinks.html">Drinks</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-inner">
+          <h1 class="hero-title" id="hero-heading">Your Team Matches</h1>
+          <p class="hero-sub">See upcoming matches and register your spot.</p>
+        </div>
+      </section>
+
+      <section class="matches-section" aria-labelledby="matches-heading">
+        <div class="section-header">
+          <h2 id="matches-heading">Upcoming Matches</h2>
+          <p>Tap Register to join a match. Tap again to remove your spot.</p>
+        </div>
+        <div class="matches-grid" role="list" aria-label="Upcoming matches">
+
+          <article class="match-card" role="listitem" aria-labelledby="match-1-title">
+            <div class="match-icon" aria-hidden="true">🏓</div>
+            <div class="match-info">
+              <h3 id="match-1-title">Riverside Open</h3>
+              <p class="match-opponent">vs. Riverside FC</p>
+              <p class="match-meta">Community Center · 7:00 PM</p>
+            </div>
+            <button class="register-btn" type="button" aria-pressed="false">Register</button>
+          </article>
+
+          <article class="match-card" role="listitem" aria-labelledby="match-2-title">
+            <div class="match-icon" aria-hidden="true">🏓</div>
+            <div class="match-info">
+              <h3 id="match-2-title">Downtown Clash</h3>
+              <p class="match-opponent">vs. Downtown Titans</p>
+              <p class="match-meta">West Hall · 6:30 PM</p>
+            </div>
+            <button class="register-btn" type="button" aria-pressed="false">Register</button>
+          </article>
+
+          <article class="match-card" role="listitem" aria-labelledby="match-3-title">
+            <div class="match-icon" aria-hidden="true">🏓</div>
+            <div class="match-info">
+              <h3 id="match-3-title">Midtown League</h3>
+              <p class="match-opponent">vs. Midtown Smashers</p>
+              <p class="match-meta">Midtown Gym · 8:00 PM</p>
+            </div>
+            <button class="register-btn" type="button" aria-pressed="false">Register</button>
+          </article>
+
+          <article class="match-card" role="listitem" aria-labelledby="match-4-title">
+            <div class="match-icon" aria-hidden="true">🏓</div>
+            <div class="match-info">
+              <h3 id="match-4-title">Eastside Night</h3>
+              <p class="match-opponent">vs. Eastside Eagles</p>
+              <p class="match-meta">East Arena · 7:30 PM</p>
+            </div>
+            <button class="register-btn" type="button" aria-pressed="false">Register</button>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="availability-header" aria-labelledby="availability-heading">
+        <div class="availability-header-inner">
+          <div class="availability-text">
+            <h2 id="availability-heading">Select the dates you are able to play</h2>
+            <p>Press the date numbers to choose which days you can play this month.</p>
+          </div>
+          <div class="availability-actions">
+            <button class="btn-secondary" type="button" aria-label="Clear selected dates">Clear</button>
+            <button class="btn-primary" type="button" aria-label="Save selected dates">Save selection</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="calendar-section" aria-labelledby="calendar-heading">
+        <h2 class="sr-only" id="calendar-heading">Availability calendar</h2>
+
+        <div class="calendar-controls">
+          <button class="month-nav" type="button" aria-label="Previous month">
+            <img src="../assets/images/left-arrow.svg" alt="" aria-hidden="true" />
+          </button>
+          <span class="month-label" aria-live="polite">January</span>
+          <button class="month-nav" type="button" aria-label="Next month">
+            <img src="../assets/images/right-arrow.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <p class="calendar-tip">Tap multiple days — selected days mark your availability for match invitations.</p>
+
+        <div class="calendar-grid" role="list" aria-label="Days of the month">
+          
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Ping Pong Hub</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script type="module" src="../js/showAvailability.js"></script>
+  <script type="module" src="../js/index.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
