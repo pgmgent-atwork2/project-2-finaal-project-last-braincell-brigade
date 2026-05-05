@@ -1,3 +1,29 @@
+.hero {
+  background: var(--grey-100);
+  padding: 60px 40px;
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--grey-600);
+  line-height: 1.6;
+}
+
 .products {
   display: flex;
   flex-direction: column;
@@ -334,11 +360,6 @@
   outline: 2px solid #4a90e2;
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-body {
-  display: flex;
-  justify-content: center;
 }
 
 .products {

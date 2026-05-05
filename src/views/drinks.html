@@ -3,29 +3,63 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="utf-8" />
-  <title>Drink menu</title>
-  <link rel="stylesheet" href="globals.css" />
+  <title>Drink menu — Ping Pong Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/reset.css" />
+  <link rel="stylesheet" href="../styles/globals.css" />
   <link rel="stylesheet" href="../styles/drinks.css" />
 </head>
+
 <body>
-  <main class="products" aria-labelledby="drink-menu-title">
-    <header class="container">
-      <h1 class="title" id="drink-menu-title">Drink menu</h1>
-      <p class="description">Tap to select. You can choose multiple.</p>
+  <div class="page">
+
+    <!-- ✅ NAVBAR (copied from availability) -->
+    <header class="top-bar">
+      <div class="logo-mark" aria-hidden="true">🏓</div>
+      <span class="brand">Ping Pong Hub</span>
+      <nav class="navigation" aria-label="Primary">
+        <a class="tab" href="./home.html">Home</a>
+        <a class="tab" href="#">Matches</a>
+        <a class="tab" href="./availability.html">Availability</a>
+        <a class="tab active" href="#" aria-current="page">Drinks</a>
+      </nav>
     </header>
 
-    <div class="content-layout">
+    <!-- ✅ MAIN CONTENT -->
+    <main class="products" aria-labelledby="drink-menu-title">
+      <header class="container">
+        <h1 class="title" id="drink-menu-title">Drink menu</h1>
+        <p class="description">Tap to select. You can choose multiple.</p>
+      </header>
+
+      <div class="content-layout">
         <aside class="sidebar">
           <p class="sidebar-label">Categories</p>
           <section class="categories" aria-label="Drink categories"></section>
         </aside>
-    
-        <section class="list" aria-label="Drink options"></section>
-    
-        <aside class="bill" aria-label="Your bill"></aside>
-    </div>
-  </main>
 
+        <section class="list" aria-label="Drink options"></section>
+
+        <aside class="bill" aria-label="Your bill"></aside>
+      </div>
+    </main>
+
+    <!-- ✅ FOOTER (optional but recommended for consistency) -->
+    <footer class="footer">
+      <p>© 2026 Ping Pong Hub</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
   <script type="module" src="../js/showDrinks.js"></script>
   <script type="module" src="../js/showCategories.js"></script>
   <script type="module" src="../js/showBill.js"></script>
