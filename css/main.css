@@ -1,0 +1,159 @@
+:root {
+    --heading-font: "Archivo Black", sans-serif;
+    --text-font: "Arimo", sans-serif;
+
+    --main-blue: rgb(11, 12, 70);
+    --accent-orange: rgb(204, 103, 35);
+    --accent-blue: rgb(66, 92, 148);
+    --light: rgb(250, 229, 210);
+    --black: black;
+}
+
+.theme-dark {
+    --bg-color: rgb(11, 12, 70);
+    --text-color: rgb(250, 229, 210);
+    --accent-color-1: rgb(66, 92, 148);
+    --accent-color-2: rgb(204, 103, 35);
+}
+
+.theme-light {
+    --bg-color: rgb(250, 229, 210);
+    --text-color: rgb(11, 12, 70);
+    --accent-color-1: rgb(66, 92, 148);
+    --accent-color-2: rgb(204, 103, 35);
+}
+
+.dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid var(--accent-orange);
+}
+
+.dot.dark {
+    background: var(--main-blue);
+}
+
+.dot.light {
+    background: var(--light);
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--text-font);
+    margin: 1rem;
+    text-transform: capitalize;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-2);
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    font-weight: 100;
+    margin: -1rem;
+    padding: 2vh 3vw;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 3px 10px var(--black);
+}
+
+.color-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1vw;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.login-register {
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 5vh;
+    height: 65vh;
+    justify-content: space-between;
+}
+
+.login,
+.register {
+    padding: 1rem;
+    border: 1.5px solid var(--accent-color-2);
+    border-radius: 15px;
+    transition: 0.5s;
+    font-size: 1.2vw;
+    box-shadow: 0 3px 10px var(--black);
+}
+
+.login:hover {
+    background: var(--accent-color-2);
+}
+
+.register:hover {
+    background: var(--accent-color-2);
+}
+
+.login-form,
+.register-form {
+    padding-top: 5vh;
+    font-size: 1.2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form {
+    margin-bottom: 5vh;
+}
+
+.login-form input,
+.register-form input {
+    background-color: var(--light);
+    border: 1px solid var(--accent-color-2);
+    padding: .3rem;
+    border-radius: 10px;
+    margin-top: 1vh;
+}
+
+#password {
+    margin-bottom: 6.5vh;
+}
+
+.forgot,
+.enter,
+.account,
+.create {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    margin-top: 15vh;
+}
+
+.buttons button {
+    background: var(--bg-color);
+    color: var(--accent-color-2);
+    border: 1px solid var(--accent-color-2);
+    border-radius: 10px;
+    padding: .5rem;
+    transition: .5s;
+}
+
+.buttons button:hover {
+    background: var(--accent-color-1);
+}

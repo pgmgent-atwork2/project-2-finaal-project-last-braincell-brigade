@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>ping-pong-hub--login</title>
+</head>
+
+<body class="theme-dark">
+    <nav>
+        <h1>pingpongclub HNO Assenede</h1>
+        <div class="color-buttons">
+            <button data-theme="dark" class="dot dark"></button>
+            <button data-theme="light" class="dot light"></button>
+        </div>
+
+    </nav>
+    <main>
+        <section class="heading">
+            <h2>login or register</h2>
+        </section>
+        <section class="login-register">
+            <div class="login">
+                <h2>Login</h2>
+                <p>use your acccount to continue.</p>
+                <form class="login-form">
+                    <label for="email" id="email">Email
+                        <input type="email" name="email" placeholder="name@example.com">
+                    </label>
+                    <label for="password" id="password">Password
+                        <input type="text" name="password" placeholder="enter your password">
+                    </label>
+                    <div class="buttons">
+                        <button class="forgot">Forgot password?</button>
+                        <button class="enter">log in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="register">
+                <h2>register</h2>
+                <p>let's get you set up.</p>
+                <form class="register-form">
+                    <label for="name" id="name">full name
+                        <input type="text" name="name" placeholder="first- lastname">
+                    </label>
+                    <label for="email" id="register-email">Email
+                        <input type="email" name="email" placeholder="name@example.com">
+                    </label>
+                    <label for="password" id="password-register">Password
+                        <input type="text" name="password" placeholder="enter your password">
+                    </label>
+                    <div class="buttons">
+                        <button class="account">I already have a account</button>
+                        <button class="create">Create account</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
