@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/globals.css">
+    <link rel="stylesheet" href="../styles/orders.css">
+</head>
+<body>
+    <div class="page">
+
+        <header class="top-bar">
+            <div class="logo-mark" aria-hidden="true">🏓</div>
+            <span class="brand">Ping Pong Hub</span>
+            <nav class="navigation" aria-label="Primary">
+                <a class="tab" href="./home.html">Home</a>
+                <a class="tab" href="#">Matches</a>
+                <a class="tab" href="./admin.html">Dashboard</a>
+                <a class="tab active" href="./orders.html" aria-current="page">orders</a>
+            </nav>
+        </header>
+    
+        <main>
+            <section class="section section-orders">
+                <div class="container container-center">
+                  <h2 class="section-title">Your Orders</h2>
+                  <p class="section-subtitle">Track paid and currently running orders, including payment times and status.</p>
+                  <div class="input-wrap">
+                    <div class="textfield">
+                      <span class="textfield-placeholder">Search by order ID, customer, or product</span>
+                    </div>
+                  </div>
+                  <div class="button-group">
+                    <button class="btn btn-secondary btn-200">Filters</button>
+                    <button class="btn btn-primary btn-200">Export</button>
+                  </div>
+                  <div class="filter-group">
+                    <div class="filter-buttons">All</div>
+                    <div class="filter-buttons">Paid</div>
+                    <div class="filter-buttons">Running</div>
+                    <div class="filter-buttons">Canceled</div>
+                  </div>
+                </div>
+                <div class="divider-bottom"></div>
+              </section>
+
+              <section class="section section-list">
+                <div class="container container-center">
+                  <h2 class="section-title">Running Orders</h2>
+                  <p class="section-subtitle">Orders currently in progress. Payment time shown for reference.</p>
+                  <div class="button-group">
+                    <button class="btn btn-secondary btn-200">Update status</button>
+                    <button class="btn btn-primary btn-200">View all running</button>
+                  </div>
+                </div>
+          
+                <div class="order-list">
+                  <div class="order-row order-row-gray">
+                    <div class="order-item">
+                      <div class="order-icon">✅</div>
+                      <div class="order-info">
+                        <p class="order-id">ORD-10482</p>
+                        <p class="order-customer">Customer: Amina Khan</p>
+                      </div>
+                      <p class="order-time">Made at 11:32 · May 6, 2026</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="divider-bottom"></div>
+              </section>
+              <section class="section section-list">
+                <div class="container container-center">
+                  <h2 class="section-title">Paid Orders</h2>
+                  <p class="section-subtitle">Orders that have been successfully paid. Sorted by most recent payment time.</p>
+                  <div class="button-group">
+                    <button class="btn btn-secondary btn-200">Payment history</button>
+                    <button class="btn btn-primary btn-200">View all paid</button>
+                  </div>
+                </div>
+          
+                <div class="order-list">
+                  <div class="order-row order-row-gray">
+                    <div class="order-item">
+                      <div class="order-icon">✅</div>
+                      <div class="order-info">
+                        <p class="order-id">ORD-10482</p>
+                        <p class="order-customer">Customer: Amina Khan</p>
+                      </div>
+                      <p class="order-time">Paid at 14:32 · May 6, 2026</p>
+                    </div>
+                  </div>
+                  <div class="order-row order-row-white">
+                    <div class="order-item">
+                      <div class="order-icon">✅</div>
+                      <div class="order-info">
+                        <p class="order-id">ORD-10482</p>
+                        <p class="order-customer">Customer: Amina Khan</p>
+                      </div>
+                      <p class="order-time">Paid at 14:32 · May 6, 2026</p>
+                    </div>
+                  </div>
+                </div>
+              <div class="divider-bottom"></div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 Ping Pong Hub</p>
+            <nav aria-label="Footer">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </nav>
+        </footer>
+
+    </div>
+
+    <script type="module" src="../js/admin.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
