@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drinks Editor</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/globals.css">
+  <link rel="stylesheet" href="../styles/drinks-editor.css">
+</head>
+<body>
+    
+    <div class="page">
+    
+        <header class="top-bar">
+          <div class="logo-mark" aria-hidden="true">🏓</div>
+          <span class="brand">Ping Pong Hub</span>
+          <nav class="navigation" aria-label="Primary">
+            <a class="tab" href="./home.html">Home</a>
+            <a class="tab" href="#">Matches</a>
+            <a class="tab active" href="#" aria-current="page">Dashboard</a>
+            <a class="tab" href="./orders.html">Orders</a>
+          </nav>
+        </header>
+
+    <main class="main">
+      <section class="section">
+        <div class="section__inner">
+          <div class="section__container">
+            <h1 class="heading-xl">Edit your drinks</h1>
+            <p class="subtext">
+              Update items and download your drinks menu anytime.
+            </p>
+            <div class="btn-group">
+              <button class="btn btn--secondary">Add Drink</button>
+              <button class="btn btn--primary">Download Menu</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form__header">
+          <h2 class="heading-xl">Add drink</h2>
+          <p class="subtext">
+            Choose an existing drink to update its price, or enter a new one to add it to your menu.
+          </p>
+        </div>
+
+        <div class="form__list">
+          <div class="form__row">
+            <div class="input">
+              <label class="input__label">Drink Name</label>
+              <input
+                id="add-drink-name"
+                class="input__field"
+                type="text"
+                placeholder="fe: Green Tea Latte"
+              >
+              <span class="input__hint">
+                Required • Max 40 characters
+              </span>
+            </div>
+
+            <div class="input">
+              <label class="input__label">Price</label>
+              <input
+                id="add-drink-price"
+                class="input__field"
+                type="text"
+                placeholder="fe: 4.99"
+              >
+              <span class="input__hint">
+                Required • Use numbers only
+              </span>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="selection">
+              <span class="input__label">Category</span>
+              <div id="chip-group" class="chip-group">
+
+              </div>
+              <span class="input__hint">Optional</span>
+            </div>
+
+            <div class="image-input">
+              <span class="input__label">Image</span>
+              <button class="btn--upload">Upload image</button>
+              <span class="input__hint">
+                Required • max upload size 50mb
+              </span>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn--secondary btn--secondary-wide">
+              Cancel
+            </button>
+            <button id="add-drink-btn" class="btn btn--primary btn--primary-wide">
+              Add drink
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form__header">
+          <h2 class="heading-xl">Search for drinks</h2>
+        
+          <p class="subtext">
+            Search for drinks by name and/or selecting categories,
+            click on a drink to update it.
+          </p>
+        </div>
+    
+        <div class="form__list">
+          <div class="form__row">
+            <div class="input">
+              <label class="input__label">Drink Name</label>
+            
+              <input
+                class="input__field"
+                type="text"
+                placeholder="fe: Green Tea Latte"
+              >
+            
+              <span class="input__hint">
+                Required • Max 40 characters
+              </span>
+            </div>
+        
+            <div class="selection">
+              <span class="input__label">Category</span>
+            
+              <div class="chip-group">
+                <div class="chip">Cold</div>
+                <div class="chip">Hot</div>
+                <div class="chip chip--wide">Smoothie</div>
+                <div class="chip chip--wide">Mocktail</div>
+                <div class="chip chip--wide">Dessert</div>
+                <div class="chip chip--wide">Beverage</div>
+              </div>
+          
+              <span class="input__hint">Optional</span>
+            </div>
+          </div>
+      
+          <div class="btn-group">
+            <button class="btn btn--secondary btn--secondary-wide">
+              Cancel
+            </button>
+        
+            <button class="btn btn--primary btn--primary-wide">
+              Apply
+            </button>
+          </div>
+      
+          <div class="products__list">
+            <div class="products__row">
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Sparkling water bottle with lime
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Sparkling Water</p>
+                  <p class="card__desc">0 cal • Caffeine-free</p>
+                </div>
+              </div>
+          
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Iced cola with ice cubes
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Cola</p>
+                  <p class="card__desc">Refreshing • 330ml</p>
+                </div>
+              </div>
+          
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Orange juice carton
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Orange Juice</p>
+                  <p class="card__desc">Citrus • 250ml</p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="products__row">
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Green tea bottle
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Green Tea</p>
+                  <p class="card__desc">Light • 500ml</p>
+                </div>
+              </div>
+          
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Sports drink in bottle
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Sports Drink</p>
+                  <p class="card__desc">Electrolytes • 500ml</p>
+                </div>
+              </div>
+          
+              <div class="card">
+                <div class="card__image">
+                  <span class="card__image-label">
+                    Iced lemon tea glass
+                  </span>
+                </div>
+            
+                <div class="card__text">
+                  <p class="card__name">Lemon Tea</p>
+                  <p class="card__desc">Zesty • 330ml</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    <section class="form-section">
+      <div class="form__header">
+        <h2 class="heading-xl">Edit drink details</h2>
+    
+        <p class="subtext">
+          Update name, category, price, and availability.
+          Use "Update" to apply changes.
+        </p>
+      </div>
+  
+      <div class="form__list">
+        <div class="form__row">
+          <div class="input">
+            <label class="input__label">Drink Name</label>
+        
+            <input
+              class="input__field"
+              type="text"
+              placeholder="fe: Mojito Cooler"
+            >
+        
+            <span class="input__hint">
+              Keep it short and searchable
+            </span>
+          </div>
+      
+          <div class="selection">
+            <span class="input__label">Category</span>
+        
+            <div class="chip-group">
+              <div class="chip">Cold</div>
+              <div class="chip">Hot</div>
+              <div class="chip chip--wide">Smoothie</div>
+              <div class="chip chip--wide">Mocktail</div>
+              <div class="chip chip--wide">Dessert</div>
+              <div class="chip chip--wide">Beverage</div>
+            </div>
+        
+            <span class="input__hint">Optional</span>
+          </div>
+        </div>
+    
+        <div class="form__row">
+          <div class="input">
+            <label class="input__label">Price</label>
+        
+            <input
+              class="input__field"
+              type="text"
+              placeholder="fe: 6.50"
+            >
+        
+            <span class="input__hint">
+              Displayed on the menu
+            </span>
+          </div>
+      
+          <div class="image-input">
+            <span class="input__label">Image</span>
+        
+            <button class="btn--upload">
+              Upload image
+            </button>
+        
+            <span class="input__hint">
+              Required • max upload size 50mb
+            </span>
+          </div>
+        </div>
+    
+        <div class="btn-group">
+          <button class="btn btn--secondary btn--secondary-wide">
+            Reset
+          </button>
+      
+          <button class="btn btn--primary btn--primary-wide">
+            Update drink
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Ping Pong Hub</p>
+
+    <nav aria-label="Footer">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+    </nav>
+  </footer>
+</div>
+
+    <script type="module" src="../js/changeDrinks.js"></script>
+    <script type="module" src="../js/admin.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

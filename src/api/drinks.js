@@ -13,3 +13,18 @@ export async function getDrinks() {
 
     return data;
 }
+
+export async function addDrink(drink) {
+    const { data, error } = await supabase
+        .from('drinks')
+        .insert(drink)
+        .select()
+        .maybeSingle();
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    return data;
+}
