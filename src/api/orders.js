@@ -21,6 +21,34 @@ export async function getOrCreateOrder() {
   return created;
 }
 
+export async function getClosedOrders() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*, order_items(*, drinks(name, price, image_url)), profiles(first_name, last_name)')
+    .eq('profile_id', user.id)
+    .eq('status', 'closed')
+    .order('updated_at', { ascending: false });
+
+  if (error) console.error('getClosedOrders error:', error);
+  return data || [];
+}
+
+export async function getOpenOrders() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*, order_items(*, drinks(name, price, image_url)), profiles(first_name, last_name)')
+    .eq('profile_id', user.id)
+    .eq('status', 'open')
+    .order('created_at', { ascending: false });
+
+  if (error) console.error('getOpenOrders error:', error);
+  return data || [];
+}
+
 export async function addDrinkToOrder(orderId, drink) {
   const { data: existing } = await supabase
     .from('order_items')
