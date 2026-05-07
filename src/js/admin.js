@@ -1,4 +1,4 @@
-import { requireAuth } from '../utils/authGuard.js';
+import { requireAdmin } from '../utils/authGuard.js';
 
 async function init() {
   await requireAdmin();
