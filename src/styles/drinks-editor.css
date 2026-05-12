@@ -34,7 +34,6 @@
   width: 100%;
 }
 
-
 .heading-xl {
   font-size: 40px;
   font-weight: 700;
@@ -47,6 +46,17 @@
   font-size: 16px;
   line-height: 24px;
   text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-bar .input__field {
+  flex: 1;
 }
 
 .btn-group {
@@ -97,33 +107,86 @@
   font-family: inherit;
 }
 
-.form-section {
-  width: 100%;
-  max-width: 1220px;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+[hidden] {
+  display: none !important;
 }
 
-.form__header {
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__box {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 80vw;
+  max-height: 90vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+}
+
+.modal__header {
+  display: flex;
   align-items: center;
-  gap: 24px;
-  text-align: center;
+  justify-content: space-between;
+  padding: 28px 32px 0;
+}
+
+.modal__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.modal__close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: rgba(0,0,0,0.5);
+  line-height: 1;
+  padding: 4px;
+}
+
+.modal__close:hover {
+  color: #000000;
+}
+
+.modal__body {
+  padding: 28px 32px;
+  flex: 1;
+}
+
+.modal__footer {
+  padding: 0 32px 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .form__list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
 }
 
 .form__row {
   display: flex;
-  gap: 80px;
+  gap: 24px;
 }
 
 .input,
@@ -133,6 +196,14 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.image-preview {
+  max-height: 140px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .input__label {
@@ -176,70 +247,63 @@
   background: rgba(0,0,0,0.05);
 }
 
-.chip--wide {
-  min-width: 100px;
-  text-align: center;
+.active-chip {
+  background: #000000;
+  color: #ffffff;
 }
 
-.products-section {
-  width: 100%;
-  max-width: 1220px;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.products__header {
-  text-align: center;
+.active-chip:hover {
+  background: #000000;
+  opacity: 0.85;
 }
 
 .products__list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
 }
 
 .products__row {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
+  display: contents;
 }
 
 .card {
-  flex: 1;
-  min-width: 260px;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 16px;
   overflow: hidden;
   background: #ffffff;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 .card__image {
-  height: 180px;
+  height: 250px;
   background: rgba(0,0,0,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
+  overflow: hidden;
 }
 
-.card__image-label {
-  font-size: 14px;
-  color: rgba(0,0,0,0.6);
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card__text {
-  padding: 20px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .card__name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -249,25 +313,42 @@
 }
 
 @media (max-width: 1100px) {
-  .form__row {
-    flex-direction: column;
-    gap: 32px;
+  .products__list {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .form-section,
-  .section__inner,
-  .products-section {
+@media (max-width: 768px) {
+  .section__inner {
     padding: 40px 24px;
   }
 
-  .heading-xl {
-    font-size: 32px;
-    line-height: 40px;
+  .modal__box {
+    margin: 0 16px;
+    max-height: 95vh;
   }
-}
-@media (max-width: 768px) {
+
+  .modal__header,
+  .modal__body,
+  .modal__footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .form__row {
+    flex-direction: column;
+  }
+
+  .products__list {
+    grid-template-columns: 1fr;
+  }
+
   .btn--primary,
   .btn--secondary {
     width: 160px;
+  }
+
+  .search-bar {
+    flex-wrap: wrap;
   }
 }
