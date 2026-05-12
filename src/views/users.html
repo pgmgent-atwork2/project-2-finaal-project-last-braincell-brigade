@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Users</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/globals.css">
+  <link rel="stylesheet" href="../styles/users.css">
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="top-bar">
+      <div class="logo-mark" aria-hidden="true">🏓</div>
+      <span class="brand">Ping Pong Hub</span>
+      <nav class="navigation" aria-label="Primary">
+        <a class="tab" href="./home.html">Home</a>
+        <a class="tab active" href="#" aria-current="page">Users</a>
+        <a class="tab" href="./admin.html">Admin dashboard</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="section">
+        <div class="container">
+          <h1 class="title">Check users</h1>
+          <p class="description">View all users and quickly check which days they're available.</p>
+
+          <div class="search-bar">
+            <input
+              id="search-input"
+              class="search-bar__input"
+              type="text"
+              placeholder="Search by name"
+            >
+            <button id="search-btn" class="button-primary">Search</button>
+            <button class="button-secondary">Download user list</button>
+          </div>
+
+          <div class="tab-group">
+            <div id="tab-all" class="tab tab--active">All Users</div>
+            <div id="tab-week" class="tab">Available This Week</div>
+          </div>
+
+          <div class="users__list"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Ping Pong Hub</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script type="module" src="../js/showUsers.js"></script>
+  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/auth.js"></script>
+</body>
+</html>
