@@ -1,0 +1,224 @@
+.section {
+  width: 100%;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0,0,0,0.6);
+}
+
+.users__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-state {
+  font-size: 14px;
+  color: rgba(0,0,0,0.4);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.user-row {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.user-row__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.user-row__name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.user-row__toggle {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.user-row__toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.user-row__toggle[aria-expanded="true"] {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.user-row__availability {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.02);
+}
+
+.availability__loading,
+.availability__empty {
+  font-size: 13px;
+  color: rgba(0,0,0,0.4);
+}
+
+.availability__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.availability__item {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mini-cal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.mini-cal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mini-cal__arrow {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.mini-cal__arrow:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.mini-cal__month {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mini-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.mini-cal__weekday {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.4);
+  text-align: center;
+  padding: 2px 0;
+}
+
+.mini-cal__empty {
+
+}
+
+.mini-cal__day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 12px;
+  color: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.03);
+}
+
+.mini-cal__day--on {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.button-primary {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  opacity: 0.85;
+}
+
+.button-secondary {
+  background: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .search-bar {
+    flex-wrap: wrap;
+  }
+
+  .search-bar__input {
+    width: 100%;
+  }
+
+  .availability__list {
+    flex-direction: column;
+  }
+}
