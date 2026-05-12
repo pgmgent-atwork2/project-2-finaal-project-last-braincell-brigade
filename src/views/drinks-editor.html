@@ -11,336 +11,170 @@
   <link rel="stylesheet" href="../styles/drinks-editor.css">
 </head>
 <body>
-    
-    <div class="page">
-    
-        <header class="top-bar">
-          <div class="logo-mark" aria-hidden="true">🏓</div>
-          <span class="brand">Ping Pong Hub</span>
-          <nav class="navigation" aria-label="Primary">
-            <a class="tab" href="./home.html">Home</a>
-            <a class="tab" href="#">Matches</a>
-            <a class="tab active" href="#" aria-current="page">Dashboard</a>
-            <a class="tab" href="./orders.html">Orders</a>
-          </nav>
-        </header>
+
+  <div class="page">
+
+    <header class="top-bar">
+      <div class="logo-mark" aria-hidden="true">🏓</div>
+      <span class="brand">Ping Pong Hub</span>
+      <nav class="navigation" aria-label="Primary">
+        <a class="tab" href="./home.html">Home</a>
+        <a class="tab active" href="#" aria-current="page">Drinks editor</a>
+        <a class="tab" href="./admin.html">Admin dashboard</a>
+      </nav>
+    </header>
 
     <main class="main">
       <section class="section">
         <div class="section__inner">
           <div class="section__container">
-            <h1 class="heading-xl">Edit your drinks</h1>
+            <h1 class="heading-xl">Add drinks</h1>
             <p class="subtext">
-              Update items and download your drinks menu anytime.
+              Add new drinks to your menu and download your updated drinks menu anytime.
             </p>
             <div class="btn-group">
-              <button class="btn btn--secondary">Add Drink</button>
+              <button id="open-add-modal" class="btn btn--secondary">Add Drink</button>
               <button class="btn btn--primary">Download Menu</button>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="form-section">
-        <div class="form__header">
-          <h2 class="heading-xl">Add drink</h2>
-          <p class="subtext">
-            Choose an existing drink to update its price, or enter a new one to add it to your menu.
-          </p>
-        </div>
+      <section class="section">
+        <div class="section__inner">
+          <div class="section__container">
+            <h2 class="heading-xl">Edit your drinks</h2>
+            <p class="subtext">
+              Search by name and/or category, then click a drink to edit it.
+            </p>
 
-        <div class="form__list">
-          <div class="form__row">
-            <div class="input">
-              <label class="input__label">Drink Name</label>
+            <div class="search-bar">
               <input
-                id="add-drink-name"
+                id="search-drink-name"
                 class="input__field"
                 type="text"
                 placeholder="fe: Green Tea Latte"
               >
-              <span class="input__hint">
-                Required • Max 40 characters
-              </span>
+              <button id="search-apply-btn" class="btn btn--primary">Search</button>
+              <button id="search-cancel-btn" class="btn btn--secondary">Clear</button>
             </div>
 
+            <div class="selection">
+              <span class="input__label">Category</span>
+              <div id="search-chip-group" class="chip-group"></div>
+            </div>
+
+            <div class="products__list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Ping Pong Hub</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </nav>
+    </footer>
+  </div>
+
+  <div id="add-modal" class="modal" hidden>
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+      <div class="modal__header">
+        <h2 id="add-modal-title" class="modal__title">Add drink</h2>
+        <button class="modal__close" data-close-modal aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <div class="form__list">
+          <div class="form__row">
+            <div class="input">
+              <label class="input__label">Drink Name</label>
+              <input id="add-drink-name" class="input__field" type="text" placeholder="fe: Green Tea Latte">
+              <span class="input__hint">Required • Max 40 characters</span>
+            </div>
             <div class="input">
               <label class="input__label">Price</label>
-              <input
-                id="add-drink-price"
-                class="input__field"
-                type="text"
-                placeholder="fe: 4.99"
-              >
-              <span class="input__hint">
-                Required • Use numbers only
-              </span>
+              <input id="add-drink-price" class="input__field" type="text" placeholder="fe: 4.99">
+              <span class="input__hint">Required • Use numbers only</span>
             </div>
           </div>
 
           <div class="form__row">
             <div class="selection">
               <span class="input__label">Category</span>
-              <div id="chip-group" class="chip-group">
-
-              </div>
+              <div id="chip-group" class="chip-group"></div>
               <span class="input__hint">Optional</span>
             </div>
-
             <div class="image-input">
               <span class="input__label">Image</span>
-              <button class="btn--upload">Upload image</button>
-              <span class="input__hint">
-                Required • max upload size 50mb
-              </span>
+              <input id="add-drink-image" class="btn--upload" type="file" accept="image/*">
+              <img id="add-drink-preview" class="image-preview" hidden alt="Preview">
+              <span class="input__hint">Optional • max 50mb</span>
             </div>
           </div>
-
-          <div class="btn-group">
-            <button class="btn btn--secondary btn--secondary-wide">
-              Cancel
-            </button>
-            <button id="add-drink-btn" class="btn btn--primary btn--primary-wide">
-              Add drink
-            </button>
-          </div>
         </div>
-      </section>
+      </div>
 
-      <section class="form-section">
-        <div class="form__header">
-          <h2 class="heading-xl">Search for drinks</h2>
-        
-          <p class="subtext">
-            Search for drinks by name and/or selecting categories,
-            click on a drink to update it.
-          </p>
-        </div>
-    
+      <div class="modal__footer">
+        <button class="btn btn--secondary btn--secondary-wide" data-close-modal>Cancel</button>
+        <button id="add-drink-btn" class="btn btn--primary btn--primary-wide">Add drink</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit-modal" class="modal" hidden>
+    <div class="modal__overlay" data-close-modal></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+      <div class="modal__header">
+        <h2 id="edit-modal-title" class="modal__title">Edit drink</h2>
+        <button class="modal__close" data-close-modal aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal__body">
         <div class="form__list">
           <div class="form__row">
             <div class="input">
               <label class="input__label">Drink Name</label>
-            
-              <input
-                class="input__field"
-                type="text"
-                placeholder="fe: Green Tea Latte"
-              >
-            
-              <span class="input__hint">
-                Required • Max 40 characters
-              </span>
+              <input id="edit-drink-name" class="input__field" type="text" placeholder="fe: Mojito Cooler">
+              <span class="input__hint">Keep it short and searchable</span>
             </div>
-        
             <div class="selection">
               <span class="input__label">Category</span>
-            
-              <div class="chip-group">
-                <div class="chip">Cold</div>
-                <div class="chip">Hot</div>
-                <div class="chip chip--wide">Smoothie</div>
-                <div class="chip chip--wide">Mocktail</div>
-                <div class="chip chip--wide">Dessert</div>
-                <div class="chip chip--wide">Beverage</div>
-              </div>
-          
+              <div id="edit-chip-group" class="chip-group"></div>
               <span class="input__hint">Optional</span>
             </div>
           </div>
-      
-          <div class="btn-group">
-            <button class="btn btn--secondary btn--secondary-wide">
-              Cancel
-            </button>
-        
-            <button class="btn btn--primary btn--primary-wide">
-              Apply
-            </button>
-          </div>
-      
-          <div class="products__list">
-            <div class="products__row">
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Sparkling water bottle with lime
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Sparkling Water</p>
-                  <p class="card__desc">0 cal • Caffeine-free</p>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Iced cola with ice cubes
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Cola</p>
-                  <p class="card__desc">Refreshing • 330ml</p>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Orange juice carton
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Orange Juice</p>
-                  <p class="card__desc">Citrus • 250ml</p>
-                </div>
-              </div>
+
+          <div class="form__row">
+            <div class="input">
+              <label class="input__label">Price</label>
+              <input id="edit-drink-price" class="input__field" type="text" placeholder="fe: 6.50">
+              <span class="input__hint">Displayed on the menu</span>
             </div>
-        
-            <div class="products__row">
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Green tea bottle
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Green Tea</p>
-                  <p class="card__desc">Light • 500ml</p>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Sports drink in bottle
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Sports Drink</p>
-                  <p class="card__desc">Electrolytes • 500ml</p>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card__image">
-                  <span class="card__image-label">
-                    Iced lemon tea glass
-                  </span>
-                </div>
-            
-                <div class="card__text">
-                  <p class="card__name">Lemon Tea</p>
-                  <p class="card__desc">Zesty • 330ml</p>
-                </div>
-              </div>
+            <div class="image-input">
+              <span class="input__label">Image</span>
+              <img id="edit-current-image" class="image-preview" hidden alt="Current image">
+              <input id="edit-drink-image" class="btn--upload" type="file" accept="image/*">
+              <img id="edit-drink-preview" class="image-preview" hidden alt="New image preview">
+              <span class="input__hint">Upload to replace current image</span>
             </div>
           </div>
-        </div>
-      </section>
-    
-    <section class="form-section">
-      <div class="form__header">
-        <h2 class="heading-xl">Edit drink details</h2>
-    
-        <p class="subtext">
-          Update name, category, price, and availability.
-          Use "Update" to apply changes.
-        </p>
-      </div>
-  
-      <div class="form__list">
-        <div class="form__row">
-          <div class="input">
-            <label class="input__label">Drink Name</label>
-        
-            <input
-              class="input__field"
-              type="text"
-              placeholder="fe: Mojito Cooler"
-            >
-        
-            <span class="input__hint">
-              Keep it short and searchable
-            </span>
-          </div>
-      
-          <div class="selection">
-            <span class="input__label">Category</span>
-        
-            <div class="chip-group">
-              <div class="chip">Cold</div>
-              <div class="chip">Hot</div>
-              <div class="chip chip--wide">Smoothie</div>
-              <div class="chip chip--wide">Mocktail</div>
-              <div class="chip chip--wide">Dessert</div>
-              <div class="chip chip--wide">Beverage</div>
-            </div>
-        
-            <span class="input__hint">Optional</span>
-          </div>
-        </div>
-    
-        <div class="form__row">
-          <div class="input">
-            <label class="input__label">Price</label>
-        
-            <input
-              class="input__field"
-              type="text"
-              placeholder="fe: 6.50"
-            >
-        
-            <span class="input__hint">
-              Displayed on the menu
-            </span>
-          </div>
-      
-          <div class="image-input">
-            <span class="input__label">Image</span>
-        
-            <button class="btn--upload">
-              Upload image
-            </button>
-        
-            <span class="input__hint">
-              Required • max upload size 50mb
-            </span>
-          </div>
-        </div>
-    
-        <div class="btn-group">
-          <button class="btn btn--secondary btn--secondary-wide">
-            Reset
-          </button>
-      
-          <button class="btn btn--primary btn--primary-wide">
-            Update drink
-          </button>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <p>© 2026 Ping Pong Hub</p>
+      <div class="modal__footer">
+        <button id="edit-reset-btn" class="btn btn--secondary btn--secondary-wide">Reset</button>
+        <button id="update-drink-btn" class="btn btn--primary btn--primary-wide">Update drink</button>
+      </div>
+    </div>
+  </div>
 
-    <nav aria-label="Footer">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Support</a>
-    </nav>
-  </footer>
-</div>
-
-    <script type="module" src="../js/changeDrinks.js"></script>
-    <script type="module" src="../js/admin.js"></script>
-    <script type="module" src="../js/auth.js"></script>
+  <script type="module" src="../js/changeDrinks.js"></script>
+  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/auth.js"></script>
 </body>
 </html>
