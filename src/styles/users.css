@@ -23,6 +23,67 @@
   color: rgba(0,0,0,0.6);
 }
 
+/* ── Search bar ──────────────────────────────────────────────────────────── */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar__input {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-bar__input::placeholder {
+  color: rgba(0,0,0,0.35);
+}
+
+.search-bar__input:focus {
+  border-color: rgba(0,0,0,0.35);
+}
+
+/* ── Filter tabs ─────────────────────────────────────────────────────────── */
+
+.filter-tab-group {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-tab {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+  background: rgba(217,217,217,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.filter-tab:hover {
+  background: rgba(217,217,217,0.8);
+}
+
+.filter-tab--active {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* ── User list ───────────────────────────────────────────────────────────── */
+
 .users__list {
   display: flex;
   flex-direction: column;
@@ -77,6 +138,8 @@
   border-color: #000000;
 }
 
+/* ── Availability panel ──────────────────────────────────────────────────── */
+
 .user-row__availability {
   border-top: 1px solid rgba(0,0,0,0.08);
   padding: 16px 20px;
@@ -104,6 +167,8 @@
   font-size: 13px;
   font-weight: 500;
 }
+
+/* ── Mini calendar ───────────────────────────────────────────────────────── */
 
 .mini-cal {
   display: flex;
@@ -157,7 +222,7 @@
 }
 
 .mini-cal__empty {
-
+  /* intentional placeholder for grid alignment */
 }
 
 .mini-cal__day {
@@ -177,6 +242,8 @@
   font-weight: 600;
 }
 
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+
 .button-primary {
   background: #000000;
   color: #ffffff;
@@ -187,6 +254,8 @@
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .button-primary:hover {
@@ -203,11 +272,15 @@
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .button-secondary:hover {
   opacity: 0.85;
 }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
   .search-bar {
@@ -220,5 +293,14 @@
 
   .availability__list {
     flex-direction: column;
+  }
+
+  .filter-tab-group {
+    width: 100%;
+  }
+
+  .filter-tab {
+    flex: 1;
+    text-align: center;
   }
 }

@@ -46,6 +46,8 @@ export async function getOpenOrders() {
     .order('created_at', { ascending: false });
 
   if (error) console.error('getOpenOrders error:', error);
+
+  console.log('Fetched Open Orders:', data);
   return data || [];
 }
 
