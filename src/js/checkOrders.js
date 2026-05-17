@@ -36,7 +36,7 @@ function renderOrders(orders, listId, { emptyMessage, timeLabel, icon }) {
         <div class="order-item">
           <div class="order-icon">${icon}</div>
           <div class="order-info">
-            <p class="order-id" id="ORD-${order.id}">ORD-${order.id}</p>
+            <p class="order-id" id="ORD-${order.id}">ORD-${order.id} - ${order.profiles.first_name || ''} ${order.profiles.last_name || ''}</p>
             <p class="order-customer">${order.order_items.length} item(s) · €${total.toFixed(2)}</p>
           </div>
           <p class="order-time">${timeLabel} ${formatDateTime(timestamp)}</p>

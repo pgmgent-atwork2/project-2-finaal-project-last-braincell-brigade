@@ -143,15 +143,15 @@ function setupSearch() {
     input?.addEventListener('keydown', e => { if (e.key === 'Enter') applySearch(); });
 
     allTab?.addEventListener('click', () => {
-        allTab.classList.add('tab--active');
-        weekTab?.classList.remove('tab--active');
+        allTab.classList.add('filter-tab--active');
+        weekTab?.classList.remove('filter-tab--active');
         if (input) input.value = '';
         renderUsers(allUsers);
     });
-
+    
     weekTab?.addEventListener('click', async () => {
-        weekTab.classList.add('tab--active');
-        allTab?.classList.remove('tab--active');
+        weekTab.classList.add('filter-tab--active');
+        allTab?.classList.remove('filter-tab--active');
         renderUsers(await getUsersAvailableThisWeek());
     });
 }
