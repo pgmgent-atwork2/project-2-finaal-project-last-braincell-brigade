@@ -3,8 +3,6 @@ import { getAvailability } from "../api/availability.js";
 
 let allUsers = [];
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
 function formatDateKey(year, month, day) {
     return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
@@ -12,8 +10,6 @@ function formatDateKey(year, month, day) {
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
-
-// ─── Mini calendar ────────────────────────────────────────────────────────────
 
 function renderMiniCalendar(container, availableDates, year, month) {
     const daysInMonth = getDaysInMonth(year, month);
@@ -44,7 +40,6 @@ function renderMiniCalendar(container, availableDates, year, month) {
         </div>
     `;
 
-    // Month nav
     container.querySelectorAll('.mini-cal__arrow').forEach(btn => {
         btn.addEventListener('click', () => {
             let m = month + parseInt(btn.dataset.dir);
@@ -55,8 +50,6 @@ function renderMiniCalendar(container, availableDates, year, month) {
         });
     });
 }
-
-// ─── Render users ─────────────────────────────────────────────────────────────
 
 function renderUsers(users) {
     const list = document.querySelector('.users__list');
@@ -85,8 +78,6 @@ function renderUsers(users) {
         btn.addEventListener('click', () => handleToggle(btn));
     });
 }
-
-// ─── Toggle ───────────────────────────────────────────────────────────────────
 
 async function handleToggle(btn) {
     const row = btn.closest('.user-row');
@@ -123,8 +114,6 @@ async function handleToggle(btn) {
     const now = new Date();
     renderMiniCalendar(calContainer, availableDates, now.getFullYear(), now.getMonth());
 }
-
-// ─── Search & tabs ────────────────────────────────────────────────────────────
 
 function setupSearch() {
     const input = document.querySelector('#search-input');
@@ -176,8 +165,6 @@ async function getUsersAvailableThisWeek() {
 
     return results.filter(Boolean);
 }
-
-// ─── Init ─────────────────────────────────────────────────────────────────────
 
 async function init() {
     allUsers = await getUsers() ?? [];

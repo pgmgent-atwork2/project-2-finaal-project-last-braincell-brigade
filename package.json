@@ -1,17 +1,25 @@
 {
   "dependencies": {
+    "@mollie/api-client": "^4.5.0",
     "@supabase/supabase-js": "^2.105.1",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "vite": "^8.0.10"
   },
   "name": "project-2-finaal-project-last-braincell-brigade",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node backend/server.js",
+    "dev:all": "concurrently \"vite\" \"node backend/server.js\""
   },
   "repository": {
     "type": "git",
