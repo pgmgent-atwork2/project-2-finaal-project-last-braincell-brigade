@@ -2,21 +2,44 @@ import { supabase } from "../../backend/config/supabaseClient.js";
 
 export async function getOrCreateOrder() {
   const { data: { user } } = await supabase.auth.getUser();
+  const isGuest = !user;
 
-  const { data: existing } = await supabase
-    .from('orders')
-    .select('*')
-    .eq('profile_id', user.id)
-    .eq('status', 'open')
-    .maybeSingle();
+  if (!isGuest) {
+    const { data: existing } = await supabase
+      .from('orders')
+      .select('*')
+      .eq('profile_id', user.id)
+      .eq('status', 'open')
+      .maybeSingle();
 
-  if (existing) return existing;
+    if (existing) return existing;
+  } else {
+    const guestOrderId = localStorage.getItem('guest_order_id');
+    if (guestOrderId) {
+      const { data: existing } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('id', guestOrderId)
+        .eq('status', 'open')
+        .maybeSingle();
+
+      if (existing) return existing;
+    }
+  }
 
   const { data: created } = await supabase
     .from('orders')
-    .insert({ profile_id: user.id, status: 'open' })
+    .insert({
+      profile_id: isGuest ? null : user.id,
+      status: 'open',
+      guest: isGuest,
+    })
     .select()
     .maybeSingle();
+
+  if (isGuest && created) {
+    localStorage.setItem('guest_order_id', created.id);
+  }
 
   return created;
 }
@@ -46,33 +69,35 @@ export async function getOpenOrders() {
     .order('created_at', { ascending: false });
 
   if (error) console.error('getOpenOrders error:', error);
-
-  console.log('Fetched Open Orders:', data);
   return data || [];
 }
 
 export async function addDrinkToOrder(orderId, drink) {
-  const { data: existing } = await supabase
+  const { data: existing, error: selectError } = await supabase
     .from('order_items')
-    .select('*')
+    .select('id, quantity')
     .eq('order_id', orderId)
     .eq('drink_id', drink.id)
     .maybeSingle();
 
+  if (selectError) {
+    console.error('select error:', selectError);
+    return;
+  }
+
   if (existing) {
-    await supabase
-      .from('order_items')
-      .update({ quantity: existing.quantity + 1 })
-      .eq('id', existing.id);
+    const { error } = await supabase.rpc('increment_order_item', { item_id: existing.id });
+    if (error) console.error('increment error:', error);
   } else {
-    await supabase
+    const { error: insertError } = await supabase
       .from('order_items')
       .insert({
         order_id: orderId,
         drink_id: drink.id,
         quantity: 1,
-        price_at_order: drink.price
+        price_at_order: drink.price,
       });
+    if (insertError) console.error('insert error:', insertError);
   }
 }
 
@@ -97,4 +122,21 @@ export async function closeOrder(orderId) {
     .from('orders')
     .update({ status: 'closed', updated_at: new Date().toISOString() })
     .eq('id', orderId);
+
+  localStorage.removeItem('guest_order_id');
+}
+
+export async function startGuestPayment(orderId, amount, description) {
+  const response = await fetch('/api/pay', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ orderId, amount, description }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to start payment');
+  }
+
+  const { checkoutUrl } = await response.json();
+  window.location.href = checkoutUrl;
 }

@@ -8,6 +8,7 @@ let currentOrder = null;
 function createDrinkCard(drink) {
   const article = document.createElement('article');
   article.className = 'card';
+  article.style.cursor = 'pointer';
 
   article.innerHTML = `
     <div class="image-container">
@@ -16,16 +17,19 @@ function createDrinkCard(drink) {
     <div class="text-content">
       <h2 class="div">${drink.name}</h2>
       <p class="subtitle">€${drink.price}</p>
-      <div class="icon-buttons" aria-label="Actions for ${drink.name}">
-        <button class="icon add-btn" type="button" aria-label="Add ${drink.name}">➕</button>
-      </div>
     </div>
   `;
 
-  article.querySelector('.add-btn').addEventListener('click', async () => {
+  article.addEventListener('click', async () => {
+  if (article.dataset.loading) return; 
+  article.dataset.loading = 'true';
+  try {
     await addDrinkToOrder(currentOrder.id, drink);
     await refreshBill(currentOrder.id);
-  });
+  } finally {
+    delete article.dataset.loading;
+  }
+});
 
   return article;
 }

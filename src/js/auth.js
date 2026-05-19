@@ -13,7 +13,7 @@ if (signupForm) {
 
     try {
       await signUp(email, password);
-      alert('Check your email!');
+      alert('Registered successfully! Please log in.');
       window.location.href = '/src/views/login.html';
     } catch (err) {
       alert(err.message);

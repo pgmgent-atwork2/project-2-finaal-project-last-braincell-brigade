@@ -11,10 +11,9 @@ const HOME_TEAM = 'HNO Assenede A';
 
 let allMatches = [];
 let allProfiles = [];
+let currentMatchRegistrations = [];
 let activeFilter = 'upcoming';
 let currentAssignMatchId = null;
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
 
 function isHome(match) {
   return match.Title?.startsWith(HOME_TEAM);
@@ -39,8 +38,6 @@ function formatDateTime(isoString) {
 function isUpcoming(match) {
   return match.Starts && new Date(match.Starts).getTime() > Date.now();
 }
-
-// ── Match list ────────────────────────────────────────────────────────────────
 
 function renderMatches(matches) {
   const list = document.querySelector('#matches-list');
@@ -77,7 +74,6 @@ function renderMatches(matches) {
     `;
   }).join('');
 
-  // Bind after render — delegation on #matches-list
   list.querySelectorAll('[data-assign-match-id]').forEach(btn => {
     btn.addEventListener('click', () => openAssignModal(btn.dataset.assignMatchId));
   });
@@ -102,8 +98,6 @@ function setupFilters() {
     btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
   });
 }
-
-// ── Create match modal ────────────────────────────────────────────────────────
 
 function openModal() {
   document.querySelector('#create-match-modal').hidden = false;
@@ -179,8 +173,6 @@ async function handleCreateMatch() {
   }
 }
 
-// ── Assign players modal ──────────────────────────────────────────────────────
-
 async function openAssignModal(matchId) {
   currentAssignMatchId = matchId;
   document.querySelector('#assign-modal').hidden = false;
@@ -206,6 +198,7 @@ function populatePlayerSelect() {
 
 async function refreshAssignedList() {
   const registrations = await getMatchRegistrations(currentAssignMatchId);
+  currentMatchRegistrations = registrations;
 
   const starters = registrations.filter(r => !r.reserve).length;
   const reserves = registrations.filter(r => r.reserve).length;
@@ -283,6 +276,15 @@ function setupAssignModal() {
 
     if (!profileId) { alert('Please select a player.'); return; }
 
+    const alreadyAssigned = currentMatchRegistrations.find(r => r.profile_id === profileId);
+    if (alreadyAssigned) {
+      const name = alreadyAssigned.profiles
+        ? `${alreadyAssigned.profiles.first_name} ${alreadyAssigned.profiles.last_name}`
+        : profileId;
+      alert(`${name} is already assigned to this match.`);
+      return;
+    }
+
     const addBtn = document.querySelector('#assign-add-btn');
     addBtn.disabled = true;
     addBtn.textContent = 'Adding…';
@@ -300,8 +302,6 @@ function setupAssignModal() {
     }
   });
 }
-
-// ── Init ──────────────────────────────────────────────────────────────────────
 
 async function init() {
   [allMatches, allProfiles] = await Promise.all([getMatches(), getAllProfiles()]);

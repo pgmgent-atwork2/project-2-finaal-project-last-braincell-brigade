@@ -10,8 +10,6 @@ let currentMonth;
 let availableDates = new Set();
 let userId;
 
-// ── Date helpers ──────────────────────────────────────────────────────────────
-
 function formatDate(year, month, day) {
   return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
@@ -19,8 +17,6 @@ function formatDate(year, month, day) {
 function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
 }
-
-// ── Match helpers ─────────────────────────────────────────────────────────────
 
 function isHome(match) {
   return match.Title?.startsWith(HOME_TEAM);
@@ -45,8 +41,6 @@ function formatMatchDateTime(isoString) {
 function isUpcoming(match) {
   return match.Starts && new Date(match.Starts).getTime() > Date.now();
 }
-
-// ── Match cards ───────────────────────────────────────────────────────────────
 
 async function renderMatchCards() {
   const grid = document.getElementById('matches-grid');
@@ -117,7 +111,6 @@ async function renderMatchCards() {
           btn.classList.add('registered');
         }
       } catch {
-        // Revert label on failure
         btn.textContent = isRegistered ? 'Registered ✓' : 'Register';
       } finally {
         btn.disabled = false;
@@ -125,8 +118,6 @@ async function renderMatchCards() {
     });
   });
 }
-
-// ── Calendar ──────────────────────────────────────────────────────────────────
 
 function renderCalendar() {
   const grid = document.querySelector('.calendar-grid');
@@ -186,8 +177,6 @@ function renderCalendar() {
   });
 }
 
-// ── Controls ──────────────────────────────────────────────────────────────────
-
 function bindMonthNav() {
   document.querySelector('[aria-label="Previous month"]').addEventListener('click', () => {
     if (currentMonth === 0) { currentMonth = 11; currentYear--; }
@@ -230,8 +219,6 @@ function bindSaveButton() {
     }, 1500);
   });
 }
-
-// ── Init ──────────────────────────────────────────────────────────────────────
 
 async function init() {
   const { data: { user } } = await supabase.auth.getUser();
