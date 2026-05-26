@@ -1,94 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-    <link rel="stylesheet" href="../styles/tokens.css" />
-    <link rel="stylesheet" href="../styles/reset.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HNO Assenede — Pingpong Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/reset.css" />
+  <link rel="stylesheet" href="../styles/globals.css" />
+  <link rel="stylesheet" href="../styles/home.css" />
 </head>
 <body>
-    <section class="border">
-        <header>
-            <a href="home.html">Home</a>
-            <div class="nav-links">
-                <a href="login.html">Log in</a>
-                <a href="drinks.html">Drinks</a>
-                <a href="orders.html">Orders</a>
-                <a href="admin.html">My account</a>
-            </div>
-        </header>
-        <main>
-            <img src="/project-2-finaal-project-last-braincell-brigade/src/assets/images/Group 1.png" alt="group1">
-            <p>
-                Welkom bij de home pagina van pinpong club HNO Assenede! Hier kunt u uw account terugvinden, planningen maken, wedstrijden inschrijven en uw drankje registreren na het sporten. 
-                Via deze site kan u uw drank opnemen, betalen of een rekening openen als u verkiest om later te betalen. Als uitspeler kan u een gast account aanmaken en uw drank rechtstreeks afrekenen.
+  <div class="page">
+
+    <header class="top-bar">
+      <div class="logo-mark" aria-hidden="true">🏓</div>
+      <span class="brand">HNO Assenede</span>
+      <nav class="navigation" aria-label="Primary">
+        <a class="tab active" href="./home.html" aria-current="page">Home</a>
+        <a class="tab" href="./login.html">Log In</a>
+        <a class="tab" href="./drinks.html">Bestelling</a>
+        <a class="tab" href="./availability.html">Planning</a>
+        <a class="tab" href="#">Mijn Account</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero-section">
+        <div class="hero-card">
+          <div class="hero-paddle hero-paddle--left" aria-hidden="true">
+            <img src="../assets/images/Group 1.png" alt="" />
+          </div>
+          <div class="hero-content">
+            <h1 class="hero-title">Welkom bij<br>HNO<br>Assenede!</h1>
+            <p class="hero-text">
+              Welkom bij de home pagina van pingpong club HNO Assenede!
+              Hier kunt u uw account terugvinden, planningen maken,
+              wedstrijden inschrijven en uw drankje registreren na het sporten.
             </p>
-        </main>
-        <div class="login-btn">
-            <a href="login.html">Log in >></a>
+            <p class="hero-text">
+              Via deze site kan u uw drank opnemen, betalen of een rekening
+              openen als u verkiest om later te betalen. Als uitspeler kan u
+              een gast account aanmaken en uw drank rechtstreeks afrekenen.
+            </p>
+            <a href="./login.html" class="login-btn">Log in &gt;&gt;</a>
+          </div>
         </div>
-    </section>
-    <section class="info">
-        <h1>Over onze club >></h1>
-        <p>
-            HNO Assenede is het resultaat van een fusie tussen twee tafeltennisclubs: TASS, opgericht in 1996, en HNO, wat staat voor "Het Netje Over." 
-            Beide clubs hebben een rijke waarde binnen de tafeltenniswereld en besloten hun krachten te bundelen om samen nog sterker te staan. 
-        <br>
-        <br>
-            Met deze fusie brengen we het beste van beide clubs samen en bieden we onze leden een nog betere sportervaring. Of je nu al jaren speelt of net begint, bij HNO Assenede ben je altijd welkom!
-        </p>
-        <img src="/project-2-finaal-project-last-braincell-brigade/src/assets/images/pingpong-home-page 2.png" alt="image">
-    </section>
-    <section class="bestuur">
-        <h2>Ons Bestuur</h2>
-        <div class="bestuur-tabel">
-            <div class="tabel1">
-                <ul>
-                    <li>Voorzitter</li>
-                    <li>Erevoorzitter</li>
-                    <li>Ondervoorzitter & helpsecretaris</li>
-                    <li>Secretaris & competitieverantwoordelijke</li>
-                    <li>Penningsmeester</li>
-                    <li>Interclubleider</li>
-                    <li>Jeugdverantwoordelijke</li>
-                    <li>Materiaalmeester</li>
-                    <li>Communicatieverantwoordelijke</li>
-                </ul>
-            </div>
-            <div class="tabel2">
-                <ul>
-                    <li>Bernard Van Schiinacker</li>
-                    <li>Marleen Van Serveren</li>
-                    <li>Kevin Van Sante</li>
-                    <li>Redgy Van Sante</li>
-                    <li>Tom Hamerlinck</li>
-                    <li>Pieter Olieux</li>
-                    <li>Brecht Nuytinck</li>
-                    <li>Jeffrey Slagle</li>
-                    <li>Ennio Buysse</li>
-                </ul>
-            </div>
+      </section>
+
+      <section class="about-section">
+        <div class="about-left">
+          <h2 class="about-title">Over onze<br>club &gt;&gt;</h2>
         </div>
-    </section>
+        <div class="about-right">
+          <div class="about-paddle" aria-hidden="true">
+            <img src="../assets/images/pingpong-home-page 2.png" alt="" />
+          </div>
+          <p class="about-text">
+            HNO Assenede is het resultaat van een fusie tussen twee
+            tafeltennisclubs: TASS, opgericht in 1996, en HNO, wat staat
+            voor "Het Netje Over." Beide clubs hebben een rijke waarde binnen
+            de tafeltenniswereld en besloten hun krachten te bundelen om samen
+            nog sterker te staan.
+          </p>
+          <p class="about-text">
+            Met deze fusie brengen we het beste van beide clubs samen en
+            bieden we onze leden een nog betere sportervaring. Of je nu al
+            jaren speelt of net begint, bij HNO Assenede ben je altijd welkom!
+          </p>
+        </div>
+      </section>
 
+      <section class="board-section">
 
+  <div class="board-header">
+    <img
+      class="red-polygon"
+      src="../assets/images/red-polygon.svg"
+      alt="red-polygon"
+    />
+    <h2 class="board-title">Ons Bestuur</h2>
+  </div>
 
+  <img
+    src="../assets/images/left-list-polygon.svg"
+    alt=""
+    class="left-list-polygon"
+    aria-hidden="true"
+  />
 
+  <img
+    src="../assets/images/right-list-polygon.svg"
+    alt=""
+    class="right-list-polygon"
+    aria-hidden="true"
+  />
 
+  <div class="board-body">
 
+    <div class="board-col board-col--left">
+      <ul>
+        <li><span class="dot"></span>Voorzitter</li>
+        <li><span class="dot"></span>Erevoorzitter</li>
+        <li><span class="dot"></span>Ondervoorzitter &amp; hulpsecretaris</li>
+        <li><span class="dot"></span>Secretaris &amp; competitieverantwoordelijke</li>
+        <li><span class="dot"></span>Penningmeester</li>
+        <li><span class="dot"></span>Interclubleider</li>
+        <li><span class="dot"></span>Jeugdverantwoordelijke</li>
+        <li><span class="dot"></span>Materiaalmeester</li>
+        <li><span class="dot"></span>Communicatieverantwoordelijke</li>
+      </ul>
+    </div>
 
+    <div class="board-col board-col--right">
+      <ul>
+        <li>Bernard Van Schoonacker<span class="dot-light"></span></li>
+        <li>Marleen Van Severen †<span class="dot-light"></span></li>
+        <li>Kevin Van Sante<span class="dot-light"></span></li>
+        <li>Redgy Van Sante<span class="dot-light"></span></li>
+        <li>Tom Hamerlinck<span class="dot-light"></span></li>
+        <li>Pieter Olieux<span class="dot-light"></span></li>
+        <li>Brecht Nuytinck<span class="dot-light"></span></li>
+        <li>Jeffrey Slagle<span class="dot-light"></span></li>
+        <li>Ennio Buysse<span class="dot-light"></span></li>
+      </ul>
+    </div>
 
+  </div>
 
+</section>
 
+    </main>
 
-    <!--
-    <button id="logout-btn">
-        Logout
-    </button>
-    -->
+    <footer class="site-footer">
+      <div class="footer-paddles" aria-hidden="true">
+        <img src="../assets/images/pingpong-home-page 2.png" alt="" class="footer-paddle-img footer-paddle-img--1" />
+        <img src="../assets/images/Group 1.png" alt="" class="footer-paddle-img footer-paddle-img--2" />
+      </div>
+      <div class="footer-nav-block">
+        <h3 class="footer-block-title">Navigatie</h3>
+        <nav>
+          <a href="./home.html">Home</a>
+          <a href="./login.html">Log In</a>
+          <a href="./drinks.html">Bestelling</a>
+          <a href="./availability.html">Planning</a>
+          <a href="#">Mijn Account</a>
+        </nav>
+      </div>
+      <div class="footer-contact-block">
+        <h3 class="footer-block-title">Contact</h3>
+        <p>Locatie: Leegstraat 19, 9960 Assenede, België</p>
+        <p>Voorzitter: Bernard Van Schoonacker</p>
+        <p>Email: <a href="mailto:bernardvs@telenet.be">bernardvs@telenet.be</a></p>
+        <p>Tel: 0473 85 63 74</p>
+      </div>
+      <div class="footer-logo-block">
+        <img src="../assets/images/logo.png" alt="HNO Assenede" class="footer-logo" />
+      </div>
+    </footer>
 
-    <script type="module" src="../js/index.js"></script>
-    <script type="module" src="../js/auth.js"></script> 
+  </div>
+
+  <script type="module" src="../js/index.js"></script>
+  <script type="module" src="../js/auth.js"></script>
 </body>
 </html>
