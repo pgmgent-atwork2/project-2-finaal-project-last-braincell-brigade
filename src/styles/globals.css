@@ -27,9 +27,8 @@ button:focus-visible {
 /* ── Top bar ─────────────────────────────────────────────── */
 .top-bar {
   position: sticky;
-  top: 1rem;
+  top: 8vh;
   z-index: 100;
-
   display: flex;
   align-items: center;
   gap: 12px;
@@ -37,11 +36,10 @@ button:focus-visible {
   height: 3.5rem;
   margin: 1.5rem auto 0;
   padding: 0 2rem;
-
   background-color: var(--orange-bg);
-  border-radius: 2rem;
+  border-radius: 30px;
   font-weight: bold;
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--shadow-md);
 }
 
 .logo-mark img {
@@ -69,13 +67,13 @@ button:focus-visible {
   font-weight: 500;
   color: var(--blauw);
   padding: 0.4rem 1rem;
-  border-radius: 20px;
-  transition: background-color 0.2s, color 0.2s;
+  border-radius: 30px;
+  transition: .5s ease;
+  border: 1.5px solid transparent;
 }
 
 .tab:hover {
-  background-color: var(--orange);
-  color: var(--white);
+  border: 1.5px solid var(--orange);
 }
 
 .tab.active {
