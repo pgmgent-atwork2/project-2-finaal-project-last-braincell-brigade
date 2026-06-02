@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+}
+
+.login-wrapper {
+    padding: 2.5rem;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.login-page {
+    background: var(--blauw);
+    height: 100%;
+    border-radius: 30px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form {
+    color: var(--orange);
+    text-transform: capitalize;
+    padding: 1.5rem;
+    border: 1.5px solid var(--orange);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5vw;
+    transition: .6s;
+}
+
+.form:hover {
+    background-color: var(--orange);
+    color: var(--blauw);
+
+    #submit-button {
+        background-color: var(--blauw);
+    }
+
+    #submit-button:hover {
+        background-color: var(--rood);
+    }
+}
+
+.form input {
+    padding: .5rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1.5vh;
+}
+
+.register {
+    grid-row: span 2;
+}
+
+.heading-form-register {
+    margin-top: -4rem;
+}
+
+#submit-button {
+    color: var(--white);
+    background: var(--orange);
+    font-size: 1.5vw;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 30px;
+    transition: .6s;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 2fr .5fr;
+    grid-template-rows: 1fr;
+}
+
+.heading-form-login {
+    margin-top: -3vh;
+}
+
+.login form {
+    grid-row: 1;
+}
+
+.heading-form-gast {
+    margin-top: -1.5vh;
+    left: 0;
+    text-align: left;
+}
+
+.gastlogin,
+.gastlogin input {
+    text-align: end;
+}
+
+.gastlogin input {
+    width: 85%;
+    justify-self: self-end;
+}
+
+.gastlogin form {
+    margin-top: -7vh;
+}
+
+.pingpong {
+    position: absolute;
+    left: 77vw;
+    top: 19.5vh;
+}
+
+.pingpong img {
+    width: 23vw;
+    height: auto;
+}
