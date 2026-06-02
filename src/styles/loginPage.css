@@ -120,3 +120,73 @@ body {
 #home {
     color: var(--rood);
 }
+
+@media (max-width: 768px) {
+    .login-wrapper {
+        margin: -1.5rem;
+    }
+
+    .login-page {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .register {
+        grid-row: auto;
+        order: 2;
+    }
+
+    .register input,
+    .login input,
+    .gastlogin input {
+        width: 100%;
+    }
+
+    .heading-form-register svg,
+    .heading-form-gast svg {
+        width: 45vw;
+        height: auto;
+        margin-top: 3.5vh;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heading-form-login svg {
+        width: 30vw;
+        height: auto;
+        margin-left: 50%;
+    }
+
+    .login form {
+        margin-top: -2.5vh;
+    }
+
+    #submit-button {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .gastlogin {
+        order: 3;
+    }
+
+    .heading-form-gast svg {
+        margin-top: -1vh;
+    }
+
+    .gastlogin form {
+        margin-top: -1.5vh;
+    }
+
+    .form {
+        font-size: 1rem;
+    }
+
+    .pingpong {
+        display: none;
+    }
+}
