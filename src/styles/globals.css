@@ -44,9 +44,11 @@ button:focus-visible {
   box-shadow: var(--shadow-hard);
 }
 
-.logo-mark {
-  font-size: 22px;
-  line-height: 1;
+.logo-mark img {
+  width: 8vw;
+  height: auto;
+  display: flex;
+  margin-top: 2.5vh;
 }
 
 .brand {
