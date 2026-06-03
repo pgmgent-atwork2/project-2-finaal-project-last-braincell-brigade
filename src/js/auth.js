@@ -25,12 +25,11 @@ if (signinForm) {
   signinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('signin-email').value;
+    const password = document.getElementById('signin-password').value;
 
     try {
       await signIn(email, password);
-      
       alert('Signed in successfully!');
       window.location.href = '/src/views/home.html';
     } catch (err) {
