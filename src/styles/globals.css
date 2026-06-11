@@ -124,24 +124,83 @@ button:focus-visible {
 }
 
 /* ── Footer ──────────────────────────────────────────────── */
-.footer {
-  margin-top: auto;
-  border-top: 1px solid var(--grey-200);
-  padding: 24px 40px;
+
+.site-footer {
+  background: var(--blauw);
+  border-radius: 80px 80px 0 0;
+  border-top: 40px solid var(--orange);
+  color: var(--orange);
   display: flex;
+  flex-direction: column;
+  position: relative;
   align-items: center;
-  justify-content: space-between;
-  font-size: 13px;
-  color: var(--grey-600);
+  height: 100vh;
+  padding: 5vh 2rem;
+  padding-left: 36vw;
 }
 
-.footer nav {
+.footer-paddles {
+  position: absolute;
+  top: 1vh;
+  left: 5vw;
+}
+
+.footer-paddles img {
+  width: 48vw;
+  height: auto;
+}
+
+.navigation-footer {
   display: flex;
-  gap: 24px;
+  flex-direction: row;
+  width: 60vw;
+  justify-content: space-evenly;
+  border: 1.5px solid var(--orange);
+  padding: 5vh 0;
+  border-radius: 100px 10px 10px 10px;
+  font-size: 1.5vw;
+  margin-top: 8vh;
 }
 
-.footer a:hover {
-  color: var(--black);
+.footer-block-title-nav {
+  position: absolute;
+  left: 30vw;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 30vh;
+  justify-content: space-evenly;
+  border: 1.5px solid var(--orange);
+  padding: 1rem;
+  border-radius: 10px 100px 10px 10px;
+  font-size: 1.5vw;
+  margin-top: 11vh;
+}
+
+.footer-block-title-contact {
+  position: absolute;
+  top: 29vh;
+  left: 83vw;
+}
+
+.footer-logo-block {
+  background: var(--white);
+  width: 70vw;
+  display: flex;
+  position: absolute;
+  top: 78.8vh;
+  left: 29vw;
+  justify-content: end;
+  border-radius: 100px 0 0 0;
+  box-shadow: -5px -20px 20px rgba(0, 0, 0, .12);
+}
+
+.footer-logo-block img {
+  width: 20vw;
+  height: auto;
 }
 
 /* ── Accessibility ───────────────────────────────────────── */
