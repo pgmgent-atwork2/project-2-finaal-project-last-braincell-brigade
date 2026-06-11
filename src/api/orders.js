@@ -72,7 +72,7 @@ export async function getOpenOrders() {
   return data || [];
 }
 
-export async function addDrinkToOrder(orderId, drink) {
+export async function addDrinkToOrder(orderId, drink, quantity = 1) {
   const { data: existing, error: selectError } = await supabase
     .from('order_items')
     .select('id, quantity')
@@ -86,15 +86,19 @@ export async function addDrinkToOrder(orderId, drink) {
   }
 
   if (existing) {
-    const { error } = await supabase.rpc('increment_order_item', { item_id: existing.id });
-    if (error) console.error('increment error:', error);
+    const { error } = await supabase
+      .from('order_items')
+      .update({ quantity: existing.quantity + quantity })
+      .eq('id', existing.id);
+
+    if (error) console.error('update quantity error:', error);
   } else {
     const { error: insertError } = await supabase
       .from('order_items')
       .insert({
         order_id: orderId,
         drink_id: drink.id,
-        quantity: 1,
+        quantity,
         price_at_order: drink.price,
       });
     if (insertError) console.error('insert error:', insertError);

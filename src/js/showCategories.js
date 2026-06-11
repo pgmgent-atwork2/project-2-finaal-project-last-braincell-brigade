@@ -4,6 +4,7 @@ import { renderDrinks } from "./showDrinks.js";
 async function displayCategories() {
   const categories = await getCategories();
   const categoriesContainer = document.querySelector('.categories');
+  const title = document.querySelector('.drank-title');
 
   if (!categoriesContainer) return;
 
@@ -23,6 +24,11 @@ async function displayCategories() {
     categoriesContainer.appendChild(button);
   });
 
+  renderDrinks(null);
+  if (title) {
+    title.textContent = 'All drinks:';
+  }
+
   categoriesContainer.addEventListener('click', e => {
     const btn = e.target.closest('.category-button');
     if (!btn) return;
@@ -37,6 +43,10 @@ async function displayCategories() {
 
     const selectedId = btn.dataset.categoryId;
     renderDrinks(selectedId === 'all' ? null : Number(selectedId));
+
+    if (title) {
+      title.textContent = selectedId === 'all' ? 'All drinks:' : `${btn.textContent}:`;
+    }
   });
 }
 
