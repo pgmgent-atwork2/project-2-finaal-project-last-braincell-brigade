@@ -19,3 +19,13 @@ menuBtn.addEventListener("click", () => {
 document.getElementById("closeBtn").addEventListener("click", () => {
   sideMenu.classList.remove("open");
 });
+
+const items = document.querySelectorAll(".board-item");
+
+items.forEach(item => {
+  const button = item.querySelector(".board-role");
+
+  button.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
