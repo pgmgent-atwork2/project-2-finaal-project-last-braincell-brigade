@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matches</title>
+  <title>Planning — Ping Pong Hub</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/globals.css">
@@ -13,148 +16,44 @@
 
 <body>
   <div class="page">
-
     <header class="top-bar">
-      <div class="logo-mark" aria-hidden="true">🏓</div>
-      <span class="brand">Ping Pong Hub</span>
+      <div class="logo-mark">
+        <img src="../assets/images/HNO_Assenede_logo.png" alt="logo van HNO Assenede">
+      </div>
       <nav class="navigation" aria-label="Primary">
-        <a class="tab" href="./home.html">Home</a>
-        <a class="tab active" href="#" aria-current="page">Matches</a>
-        <a class="tab" href="./admin.html">Admin dashboard</a>
+        <a class="tab" href="./login.html">Log In</a>
+        <a class="tab" href="./drinks.html">Order</a>
+        <a class="tab active" href="./matches.html" aria-current="page">Planning</a>
+        <a class="tab" href="#">My Account</a>
+      </nav>
+    </header>
+
+    <header class="side-bar">
+      <button id="menuBtn" class="menu" type="button" aria-label="Open menu">☰</button>
+      <nav id="sideMenu" class="side-menu" aria-label="Mobile navigation">
+        <button id="closeBtn" class="close-menu" type="button" aria-label="Close menu">✕</button>
+        <a class="side" href="./login.html">Log In</a>
+        <a class="side" href="./drinks.html">Order</a>
+        <a class="side active" href="./matches.html" aria-current="page">Planning</a>
+        <a class="side" href="#">My Account</a>
       </nav>
     </header>
 
     <main>
-
-      <section class="section">
-        <div class="container">
-          <h1>Schedule & Assign Users to Matches</h1>
-          <p class="description">Create matches, manage lineups, and track assignments in one place.</p>
-
-          <div class="button-group">
-            <button class="btn-secondary">Download matches</button>
-            <button id="open-create-modal" class="btn-primary">Create Match</button>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-buttons active" data-filter="upcoming">Upcoming</div>
-            <div class="filter-buttons" data-filter="played">Played out</div>
-          </div>
-
-          <div id="matches-list" class="list"></div>
-        </div>
+      <section class="planning-panel" aria-labelledby="available-heading">
+        <h1 id="available-heading" class="panel-title">Beschikbare matchen:</h1>
+        <div id="available-matches" class="available-grid" aria-live="polite"></div>
       </section>
 
-      <div id="create-match-modal" class="modal" hidden data-close-modal>
-        <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    
-          <div class="modal__header">
-            <h2 id="modal-title" class="modal__title">Create Match</h2>
-            <button class="modal__close" data-close-modal aria-label="Close">✕</button>
-          </div>
-    
-          <form id="match-form" class="modal__body">
-            <div class="form-list">
-    
-              <div class="form-row">
-                <div class="input-group">
-                  <label for="input-versus">Opponent</label>
-                  <input id="input-versus" type="text" placeholder="fe: Sleidinge B">
-                  <span class="helper-text">Name of the opposing team</span>
-                </div>
-                <div class="input-group">
-                  <label for="input-home">Home or Away</label>
-                  <select id="input-home" class="input-select">
-                    <option value="home">Home</option>
-                    <option value="away">Away</option>
-                  </select>
-                  <span class="helper-text">Where is the match played?</span>
-                </div>
-              </div>
-    
-              <div class="form-row">
-                <div class="input-group">
-                  <label for="input-starts">Date & Time</label>
-                  <input id="input-starts" type="datetime-local">
-                  <span class="helper-text">Start time of the match</span>
-                </div>
-                <div class="input-group">
-                  <label for="input-location">Venue</label>
-                  <input id="input-location" type="text" placeholder="fe: VBS Het Ooievaartnest">
-                  <span class="helper-text">Leave blank for home venue</span>
-                </div>
-              </div>
-    
-              <div class="form-row">
-                <div class="input-group">
-                  <label for="input-max-players">Max Players</label>
-                  <input id="input-max-players" type="number" placeholder="fe: 6" min="1">
-                  <span class="helper-text">Determines lineup slots</span>
-                </div>
-              </div>
-    
-            </div>
-          </form>
-    
-          <div class="modal__footer">
-            <button class="btn-secondary" data-close-modal type="button">Cancel</button>
-            <button id="save-match-btn" class="btn-primary" type="submit" form="match-form">Save match</button>
-          </div>
-    
-        </div>
-      </div>
-
-      <div id="assign-modal" class="modal" hidden data-close-assign-modal>
-        <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="assign-modal-title">
-      
-          <div class="modal__header">
-            <h2 id="assign-modal-title" class="modal__title">Assign Players</h2>
-            <button class="modal__close" data-close-assign-modal aria-label="Close">✕</button>
-          </div>
-      
-          <div class="modal__body">
-            <div id="assign-counts" class="assign-counts">
-              <!-- e.g. "3 players · 1 reserve" -->
-            </div>
-      
-            <div id="assigned-list" class="assigned-list">
-              <!-- rows rendered by JS -->
-            </div>
-      
-            <div class="assign-add-row">
-              <select id="assign-player-select" class="input-select">
-                <option value="">— Select a player —</option>
-              </select>
-              <label class="assign-reserve-label">
-                <input id="assign-reserve-checkbox" type="checkbox" />
-                Reserve
-              </label>
-              <button id="assign-add-btn" class="btn-primary" type="button">Add</button>
-            </div>
-          </div>
-      
-          <div class="modal__footer">
-            <button class="btn-secondary" data-close-assign-modal type="button">Close</button>
-          </div>
-      
-        </div>
-      </div>
-
+      <section class="planning-panel my-matches-panel" aria-labelledby="my-matches-heading">
+        <h2 id="my-matches-heading" class="panel-title">Mijn komende matchen:</h2>
+        <div id="my-matches" class="my-matches-list" aria-live="polite"></div>
+      </section>
     </main>
-
-    <footer class="footer">
-      <p>© 2026 Ping Pong Hub</p>
-      <nav aria-label="Footer">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Support</a>
-      </nav>
-    </footer>
-
   </div>
 
   <script type="module" src="../js/showMatches.js"></script>
-  <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/sideMenu.js"></script>
   <script type="module" src="../js/auth.js"></script>
 </body>
 </html>
