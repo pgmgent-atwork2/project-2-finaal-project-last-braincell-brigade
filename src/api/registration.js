@@ -1,10 +1,10 @@
 import { supabase } from "../../backend/config/supabaseClient.js";
 
-export async function registerForMatch(matchId) {
+export async function registerForMatch(matchId, reserve = false) {
     const { data: { user } } = await supabase.auth.getUser();
     const { data, error } = await supabase
     .from('match_registrations')
-    .insert({ match_id: matchId, profile_id: user.id })
+    .insert({ match_id: matchId, profile_id: user.id, reserve })
     .select()
     .single();
     
