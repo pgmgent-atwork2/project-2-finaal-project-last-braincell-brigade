@@ -6,7 +6,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "vite": "^8.0.10"
+    "vite": "^8.0.16"
   },
   "name": "project-2-finaal-project-last-braincell-brigade",
   "version": "1.0.0",
