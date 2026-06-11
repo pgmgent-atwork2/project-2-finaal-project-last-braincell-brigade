@@ -11,13 +11,20 @@ init();
 
 const menuBtn = document.getElementById("menuBtn");
 const sideMenu = document.getElementById("sideMenu");
+const closeBtn = document.getElementById("closeBtn");
 
-menuBtn.addEventListener("click", () => {
-  sideMenu.classList.toggle("open");
+menuBtn?.addEventListener("click", () => {
+  sideMenu?.classList.add("open");
 });
 
-document.getElementById("closeBtn").addEventListener("click", () => {
-  sideMenu.classList.remove("open");
+closeBtn?.addEventListener("click", () => {
+  sideMenu?.classList.remove("open");
+});
+
+sideMenu?.addEventListener("click", event => {
+  if (event.target.matches("a")) {
+    sideMenu.classList.remove("open");
+  }
 });
 
 const items = document.querySelectorAll(".board-item");
@@ -25,7 +32,8 @@ const items = document.querySelectorAll(".board-item");
 items.forEach(item => {
   const button = item.querySelector(".board-role");
 
-  button.addEventListener("click", () => {
+  button?.addEventListener("click", () => {
     item.classList.toggle("active");
+    button.setAttribute("aria-expanded", item.classList.contains("active"));
   });
 });
