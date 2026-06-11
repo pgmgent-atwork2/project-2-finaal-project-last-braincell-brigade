@@ -81,6 +81,48 @@ button:focus-visible {
   color: var(--white);
 }
 
+.menu {
+  font-size: 10vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  color: var(--orange);
+  position: sticky;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: var(--orange);
+  padding-top: 60px;
+  transition: left 0.3s ease;
+}
+
+.side-menu a {
+  display: block;
+  color: var(--white);
+  text-decoration: none;
+  padding: 15px 20px;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+  }
+
+  .top-bar {
+    display: none;
+  }
+}
+
 /* ── Footer ──────────────────────────────────────────────── */
 .footer {
   margin-top: auto;
