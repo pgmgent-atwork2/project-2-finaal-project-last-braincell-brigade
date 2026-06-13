@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +13,31 @@
   <link rel="stylesheet" href="../styles/globals.css">
   <link rel="stylesheet" href="../styles/orders.css">
 </head>
+
 <body>
   <div class="page">
 
     <header class="top-bar">
-      <div class="logo-mark" aria-hidden="true">🏓</div>
-      <span class="brand">Ping Pong Hub</span>
-      <nav class="navigation" aria-label="Primary">
-        <a class="tab" href="./home.html">Home</a>
-        <a class="tab" href="#">Matches</a>
-        <a class="tab" href="./admin.html">Dashboard</a>
-        <a class="tab active" href="./orders.html" aria-current="page">Orders</a>
+      <div class="logo-mark">
+        <img src="../assets/images/HNO_Assenede_logo.png" alt="logo van HNO Assenede">
+      </div>
+      <nav class="navigation">
+        <a class="tab " href="./home.html" aria-current="page">Home</a>
+        <a class="tab" href="./login.html">Log In</a>
+        <a class="tab active" href="./drinks.html" aria-label="Primary">Bestelling</a>
+        <a class="tab" href="./matches.html">Planning</a>
+        <a class="tab" href="./myAccount.html">Mijn Account</a>
+      </nav>
+    </header>
+    <header class="side-bar">
+      <button id="menuBtn" class="menu" type="button" aria-label="Open menu">☰</button>
+      <nav id="sideMenu" class="side-menu" aria-label="Mobile navigation">
+        <button id="closeBtn" class="close-menu" type="button" aria-label="Close menu">✕</button>
+        <a class="side " href="./home.html">Home</a>
+        <a class="side" href="./login.html">Log In</a>
+        <a class="side active" href="./drinks.html" aria-current="page">Bestelling</a>
+        <a class="side" href="./availability.html">Planning</a>
+        <a class="side" href="./myAccount.html">Mijn Account</a>
       </nav>
     </header>
 
@@ -33,7 +48,8 @@
           <p class="section-subtitle">Track paid and currently running orders, including payment times and status.</p>
           <div class="input-wrap">
             <div class="textfield">
-              <input id="search-input" class="textfield-input" placeholder="Search by order ID, customer fe: ORD-1, John Doe">
+              <input id="search-input" class="textfield-input"
+                placeholder="Search by order ID, customer fe: ORD-1, John Doe">
             </div>
           </div>
           <div class="button-group">
@@ -75,4 +91,5 @@
   <script type="module" src="../js/admin.js"></script>
   <script type="module" src="../js/auth.js"></script>
 </body>
+
 </html>

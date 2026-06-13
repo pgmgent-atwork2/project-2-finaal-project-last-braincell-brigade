@@ -74,6 +74,7 @@ button:focus-visible {
 
 .tab:hover {
   border: 1.5px solid var(--orange);
+  color: var(--orange);
 }
 
 .tab.active {
