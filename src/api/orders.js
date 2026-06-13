@@ -58,6 +58,22 @@ export async function getClosedOrders() {
   return data || [];
 }
 
+export async function getAccountOrders() {
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return [];
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*, order_items(*, drinks(name, price, image_url)), profiles(first_name, last_name)')
+    .eq('profile_id', user.id)
+    .eq('status', 'account')
+    .order('updated_at', { ascending: false });
+
+  if (error) console.error('getAccountOrders error:', error);
+  return data || [];
+}
+
 export async function getOpenOrders() {
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -130,11 +146,18 @@ export async function closeOrder(orderId) {
   localStorage.removeItem('guest_order_id');
 }
 
-export async function startGuestPayment(orderId, amount, description) {
+export async function putOrderOnAccount(orderId) {
+  await supabase
+    .from('orders')
+    .update({ status: 'account', updated_at: new Date().toISOString() })
+    .eq('id', orderId);
+}
+
+export async function startGuestPayment(orderId, amount, description, orderIds = null) {
   const response = await fetch('/api/pay', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ orderId, amount, description }),
+    body: JSON.stringify({ orderId, orderIds, amount, description }),
   });
 
   if (!response.ok) {

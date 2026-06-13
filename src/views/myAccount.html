@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mijn Account - HNO Assenede</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../styles/myAccount.css" />
+</head>
+
+<body>
+    <div class="page account-page">
+        <header class="top-bar">
+            <div class="logo-mark">
+                <img src="../assets/images/HNO_Assenede_logo.png" alt="logo van HNO Assenede">
+            </div>
+            <nav class="navigation" aria-label="Primary">
+                <a class="tab " href="./home.html">Home</a>
+                <a class="tab" href="./login.html">Log In</a>
+                <a class="tab" href="./drinks.html">Bestelling</a>
+                <a class="tab" href="./matches.html">Planning</a>
+                <a class="tab active" href="./myAccount.html" aria-current="page">Mijn Account</a>
+            </nav>
+        </header>
+        <header class="side-bar">
+            <button id="menuBtn" class="menu" type="button" aria-label="Open menu">☰</button>
+            <nav id="sideMenu" class="side-menu" aria-label="Mobile navigation">
+                <button id="closeBtn" class="close-menu" type="button" aria-label="Close menu">✕</button>
+                <a class="side" href="./home.html">Home</a>
+                <a class="side" href="./login.html">Log In</a>
+                <a class="side" href="./drinks.html">Bestelling</a>
+                <a class="side" href="./availability.html">Planning</a>
+                <a class="side active" href="./myAccount.html" aria-current="page">Mijn Account</a>
+            </nav>
+        </header>
+
+        <main class="account-shell">
+            <section class="account-section profile-section" aria-labelledby="profile-title">
+                <h1 id="profile-title" class="section-title">Mijn Account</h1>
+
+                <div class="profile-layout">
+                    <aside class="profile-summary" aria-label="Profiel">
+                        <div class="avatar" aria-hidden="true">
+                            <span></span>
+                        </div>
+                        <p class="profile-username" data-account-username>...</p>
+                    </aside>
+
+                    <form class="account-form" id="account-form">
+                        <div class="form-grid">
+                            <label class="field">
+                                <span>Familienaam</span>
+                                <input type="text" name="last_name" autocomplete="family-name">
+                            </label>
+                            <label class="field">
+                                <span>Username</span>
+                                <input type="text" name="username" autocomplete="username">
+                            </label>
+                            <label class="field">
+                                <span>Naam</span>
+                                <input type="text" name="first_name" autocomplete="given-name">
+                            </label>
+                            <label class="field">
+                                <span>Telefoonnummer</span>
+                                <input type="tel" name="phone" autocomplete="tel">
+                            </label>
+                            <label class="field">
+                                <span>Email</span>
+                                <input type="email" name="email" autocomplete="email">
+                            </label>
+                            <label class="field">
+                                <span>Wachtwoord</span>
+                                <input type="password" name="password" placeholder="Nieuw wachtwoord">
+                            </label>
+                        </div>
+
+                        <div class="profile-actions">
+                            <button class="icon-action" type="submit">
+                                <span aria-hidden="true">✎</span>
+                                Opslaan
+                            </button>
+                            <button class="icon-action logout-action" id="logout-btn" type="button">
+                                <span aria-hidden="true">
+                                    <img src="../assets/images/image-mandje.png" alt="">
+                                </span>
+                                Uitloggen
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="account-section bill-section" aria-labelledby="bill-title">
+                <h2 id="bill-title" class="section-title">Openstaande rekening</h2>
+
+                <div class="bill-layout">
+                    <div class="bill-list" data-account-bill-list aria-label="Openstaande drankjes">
+                        <p class="account-message">Rekening laden...</p>
+                    </div>
+
+                    <div class="bill-history" aria-label="Rekening overzicht">
+                        <div class="history-panel">
+                            <h3>Bestelgeschiedenis</h3>
+                            <ul data-account-history>
+                                <li>Geschiedenis laden...</li>
+                            </ul>
+                        </div>
+
+                        <div class="payment-panel">
+                            <p class="bill-total-label">Totaal te betalen</p>
+                            <strong class="bill-total" data-account-total>€0,00</strong>
+                            <button class="pay-button" type="button" data-pay-account-bill>Rekening betalen</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="../js/sideMenu.js"></script>
+    <script type="module" src="../js/myAccount.js"></script>
+</body>
+
+</html>

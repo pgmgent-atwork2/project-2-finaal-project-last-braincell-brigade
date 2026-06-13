@@ -25,7 +25,10 @@ const supabase = createClient(
 );
 
 app.post('/api/pay', async (req, res) => {
-  const { orderId, amount, description } = req.body;
+  const { orderId, orderIds, amount, description } = req.body;
+  const paymentOrderIds = Array.isArray(orderIds) && orderIds.length > 0
+    ? orderIds.map(String)
+    : [String(orderId)];
 
   try {
     const payment = await mollie.payments.create({
@@ -36,7 +39,10 @@ app.post('/api/pay', async (req, res) => {
       description,
       redirectUrl: `${process.env.VITE_FRONTEND_URL}/payment-return.html?orderId=${orderId}`,
       webhookUrl: `${process.env.BACKEND_URL}/api/webhook`,
-      metadata: { orderId: String(orderId) },
+      metadata: {
+        orderId: String(orderId),
+        orderIds: paymentOrderIds,
+      },
     });
 
     res.json({ checkoutUrl: payment.getCheckoutUrl() });
@@ -58,6 +64,9 @@ app.post('/api/webhook', async (req, res) => {
 
     const payment = await mollie.payments.get(paymentId);
     const orderId = payment.metadata.orderId;
+    const orderIds = Array.isArray(payment.metadata.orderIds)
+      ? payment.metadata.orderIds
+      : [orderId];
 
     console.log('Payment status:', payment.status);
 
@@ -75,7 +84,7 @@ app.post('/api/webhook', async (req, res) => {
           status: newStatus,
           updated_at: new Date().toISOString(),
         })
-        .eq('id', orderId);
+        .in('id', orderIds);
 
       if (error) {
         console.error('Supabase update error:', error);
