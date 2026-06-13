@@ -1,4 +1,4 @@
-import { getOrderItems, removeOrderItem, closeOrder, startGuestPayment } from "../api/orders.js";
+import { getOrderItems, removeOrderItem, closeOrder, putOrderOnAccount, startGuestPayment } from "../api/orders.js";
 import { supabase } from "../../backend/config/supabaseClient.js";
 
 function formatPrice(price) {
@@ -82,7 +82,7 @@ export async function refreshBill(orderId) {
       return;
     }
 
-    await closeOrder(orderId);
+    await putOrderOnAccount(orderId);
     bill.innerHTML = '<p class="bill-empty">Bestelling staat op je rekening.</p>';
   });
 }
