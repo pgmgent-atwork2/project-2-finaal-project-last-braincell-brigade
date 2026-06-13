@@ -9,53 +9,7 @@ body {
 }
 
 .top-bar {
-  top: auto;
-  z-index: 2;
-  width: min(90vw, 1260px);
-  height: 68px;
-  margin: 18px auto 0;
-  padding: 0 34px;
-  background: #fce9e3;
-  border-radius: 18px;
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.22);
-}
-
-.logo-mark img {
-  width: 130px;
-  margin-top: 0;
-}
-
-.navigation {
-  gap: 28px;
-}
-
-.tab {
-  color: var(--blauw);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.tab.active {
-  background: transparent;
-  color: var(--orange);
-}
-
-.side-bar {
-  display: none;
-}
-
-.close-menu {
-  align-self: flex-end;
-  margin: 0 14px 18px 0;
-  border: 0;
-  background: transparent;
-  color: var(--white);
-  font-size: 24px;
-  font-weight: 900;
-}
-
-.side.active {
-  background: rgba(255, 255, 255, 0.16);
+  margin-top: 5vh;
 }
 
 main {
@@ -243,6 +197,7 @@ main {
 }
 
 @media (max-width: 768px) {
+
   html,
   body {
     width: 100%;
