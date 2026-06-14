@@ -53,33 +53,6 @@
   box-shadow: 0 18px 30px rgba(0, 0, 0, .38);
 }
 
-@media (max-width: 768px) {
-  .hero-section {
-    margin: 1rem auto 1rem;
-  }
-
-  .hero-card {
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .hero-paddle--left img {
-    width: auto;
-    height: 40vh;
-    margin-left: -20vw;
-    margin-top: -5vh;
-  }
-
-  .hero-content {
-    max-width: 65vw;
-    margin-top: -2vh;
-  }
-
-  .hero-content a {
-    font-size: 5vw
-  }
-}
-
 .about-section {
   display: grid;
   grid-template-columns: 28vw 60vw;
@@ -87,6 +60,8 @@
   align-items: stretch;
   justify-content: center;
   position: relative;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 .about-left {
@@ -125,51 +100,21 @@
   position: absolute;
   width: auto;
   height: auto;
-  top: 36vh;
-  left: 69vw;
+  top: 80%;
+  right: -2vw;
+  transform: translateY(-50%);
   transition: 1.5s;
+  z-index: 10;
 }
 
 .about-paddle img {
-  width: 30vw;
+  width: 25vw;
   height: auto;
 }
 
 .about-paddle:hover {
-  transform: rotate(-15deg);
+  transform: translateY(-50%) rotate(-15deg);
   transform-origin: 70%;
-  top: 40vh;
-  left: 65.32vw;
-}
-
-@media (max-width: 768px) {
-  .about-section {
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
-  }
-
-  .about-title {
-    font-size: 6vw;
-    padding: 1vh 0;
-  }
-
-  .about-right {
-    padding: 3vh 5vw 8vh;
-  }
-
-  .about-right p {
-    font-size: 4.5vw;
-  }
-
-  .about-paddle {
-    top: 61vh;
-    left: 50vw;
-  }
-
-  .about-paddle img {
-    width: 45vw;
-  }
 }
 
 .board-section {
@@ -275,6 +220,71 @@
 
 .board-item {
   display: none;
+}
+
+/* ── Media Queries ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .hero-section {
+    margin: -2rem auto 1rem;
+  }
+
+  .hero-card {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .hero-paddle--left img {
+    width: auto;
+    height: 40vh;
+    margin-left: -20vw;
+    margin-top: -5vh;
+  }
+
+  .hero-content {
+    max-width: 65vw;
+    margin-top: -2vh;
+  }
+
+  .hero-content a {
+    font-size: 5vw
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+  }
+
+  .about-title {
+    font-size: 6vw;
+    padding: 1vh 0;
+  }
+
+  .about-right {
+    padding: 3vh 5vw 8vh;
+  }
+
+  .about-right p {
+    font-size: 4.5vw;
+  }
+
+  .about-paddle {
+    position: absolute;
+    bottom: -26%;
+    top: auto;
+    right: auto;
+    left: 66%;
+    margin-top: 2vh;
+  }
+
+  .about-paddle img {
+    width: 40vw;
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {

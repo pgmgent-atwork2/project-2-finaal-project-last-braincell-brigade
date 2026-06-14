@@ -1,4 +1,4 @@
-import { getClosedOrders, getOpenOrders } from '../api/orders.js';
+import { getAllClosedOrders, getAllOpenOrders } from '../api/orders.js';
 
 let allClosedOrders = [];
 let allOpenOrders = [];
@@ -36,7 +36,7 @@ function renderOrders(orders, listId, { emptyMessage, timeLabel, icon }) {
         <div class="order-item">
           <div class="order-icon">${icon}</div>
           <div class="order-info">
-            <p class="order-id" id="ORD-${order.id}">ORD-${order.id} - ${order.profiles.first_name || ''} ${order.profiles.last_name || ''}</p>
+            <p class="order-id" id="ORD-${order.id}">ORD-${order.id} - ${order.profiles?.first_name || 'Guest'} ${order.profiles?.last_name || ''}</p>
             <p class="order-customer">${order.order_items.length} item(s) · €${total.toFixed(2)}</p>
           </div>
           <p class="order-time">${timeLabel} ${formatDateTime(timestamp)}</p>
@@ -138,8 +138,8 @@ function searchOrders() {
 
 async function init() {
   const [closedOrders, openOrders] = await Promise.all([
-    getClosedOrders(),
-    getOpenOrders()
+    getAllClosedOrders(),
+    getAllOpenOrders()
   ]);
 
   allClosedOrders = closedOrders;
@@ -160,15 +160,15 @@ async function init() {
   bindFilterButtons();
 
   const searchButton = document.querySelector('#search-button');
-    const searchInput = document.querySelector('#search-input');
-  
-    searchButton.addEventListener('click', searchOrders);
-  
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        searchOrders();
-      }
-    });
+  const searchInput = document.querySelector('#search-input');
+
+  searchButton.addEventListener('click', searchOrders);
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      searchOrders();
+    }
+  });
 }
 
 init();

@@ -24,9 +24,8 @@
             </div>
             <nav class="navigation" aria-label="Primary">
                 <a class="tab " href="./home.html">Home</a>
-                <a class="tab" href="./login.html">Log In</a>
                 <a class="tab" href="./drinks.html">Bestelling</a>
-                <a class="tab" href="./matches.html">Planning</a>
+                <a class="tab" href="./planning.html">Planning</a>
                 <a class="tab active" href="./myAccount.html" aria-current="page">Mijn Account</a>
             </nav>
         </header>
@@ -35,9 +34,8 @@
             <nav id="sideMenu" class="side-menu" aria-label="Mobile navigation">
                 <button id="closeBtn" class="close-menu" type="button" aria-label="Close menu">✕</button>
                 <a class="side" href="./home.html">Home</a>
-                <a class="side" href="./login.html">Log In</a>
                 <a class="side" href="./drinks.html">Bestelling</a>
-                <a class="side" href="./availability.html">Planning</a>
+                <a class="side" href="./planning.html">Planning</a>
                 <a class="side active" href="./myAccount.html" aria-current="page">Mijn Account</a>
             </nav>
         </header>
@@ -58,35 +56,27 @@
                         <div class="form-grid">
                             <label class="field">
                                 <span>Familienaam</span>
-                                <input type="text" name="last_name" autocomplete="family-name">
+                                <input type="text" name="last_name" autocomplete="family-name" disabled>
                             </label>
                             <label class="field">
                                 <span>Username</span>
-                                <input type="text" name="username" autocomplete="username">
+                                <input type="text" name="username" autocomplete="username" disabled>
                             </label>
                             <label class="field">
                                 <span>Naam</span>
-                                <input type="text" name="first_name" autocomplete="given-name">
-                            </label>
-                            <label class="field">
-                                <span>Telefoonnummer</span>
-                                <input type="tel" name="phone" autocomplete="tel">
+                                <input type="text" name="first_name" autocomplete="given-name" disabled>
                             </label>
                             <label class="field">
                                 <span>Email</span>
-                                <input type="email" name="email" autocomplete="email">
+                                <input type="email" name="email" autocomplete="email" disabled>
                             </label>
                             <label class="field">
                                 <span>Wachtwoord</span>
-                                <input type="password" name="password" placeholder="Nieuw wachtwoord">
+                                <input type="password" name="password" placeholder="Nieuw wachtwoord" disabled>
                             </label>
                         </div>
 
                         <div class="profile-actions">
-                            <button class="icon-action" type="submit">
-                                <span aria-hidden="true">✎</span>
-                                Opslaan
-                            </button>
                             <button class="icon-action logout-action" id="logout-btn" type="button">
                                 <span aria-hidden="true">
                                     <img src="../assets/images/image-mandje.png" alt="">
