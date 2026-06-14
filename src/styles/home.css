@@ -55,7 +55,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    margin: -2rem auto 1rem;
+    margin: 1rem auto 1rem;
   }
 
   .hero-card {
@@ -361,4 +361,3 @@
     align-items: center;
   }
 }
-
