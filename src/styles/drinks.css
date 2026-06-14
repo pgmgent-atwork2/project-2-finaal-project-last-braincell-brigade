@@ -123,6 +123,7 @@ main {
   align-items: center;
   gap: 5px;
   padding: 7px 9px;
+  background-color: var(--orange-bg);
   border-top: 2px solid var(--blauw);
 }
 

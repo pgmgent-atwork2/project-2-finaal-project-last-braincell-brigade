@@ -38,7 +38,7 @@ export async function refreshBill(orderId) {
             <strong>${formatPrice(total)}</strong>
           </div>
           <div class="bill-actions">
-            <button class="bill-account-btn" type="button">Naar mijn rekening</button>
+            ${!isGuest ? '<button class="bill-account-btn" type="button">Naar mijn rekening</button>' : ''}
             <button class="bill-close-btn" type="button">Direct afrekenen</button>
           </div>
         </div>

@@ -35,14 +35,14 @@ body {
 .form:hover {
     background-color: var(--orange);
     color: var(--blauw);
+}
 
-    #submit-button {
-        background-color: var(--blauw);
-    }
+.form:hover .submit-button {
+    background-color: var(--blauw);
+}
 
-    #submit-button:hover {
-        background-color: var(--rood);
-    }
+.form:hover .submit-button:hover {
+    background-color: var(--rood);
 }
 
 .form input {
@@ -108,12 +108,13 @@ body {
 
 .pingpong {
     position: absolute;
-    left: 77vw;
-    top: 19.5vh;
+    right: 28vw;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .pingpong img {
-    width: 23vw;
+    width: 12vw;
     height: auto;
 }
 

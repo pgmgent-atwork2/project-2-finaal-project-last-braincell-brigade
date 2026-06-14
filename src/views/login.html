@@ -28,22 +28,19 @@
                     </svg>
                 </div>
                 <form id="signup-form">
-                    <label for="name">naam
-                        <input type="text" id="name" placeholder="Voor- en achternaam">
+                    <label for="first_name">Voornaam
+                        <input type="text" id="first_name" placeholder="Voornaam">
                     </label>
-                    <label for="username">Gebruikersnaam
-                        <input type="text" id="username" placeholder="Gebruikersnaam">
+                    <label for="last_name">Achternaam
+                        <input type="text" id="last_name" placeholder="Achternaam">
                     </label>
                     <label for="email">E-mail
                         <input type="email" id="email" placeholder="user.example@gmail.com">
                     </label>
-                    <label for="number">Telefoonnummer
-                        <input type="tel" id="number" placeholder="+32">
-                    </label>
                     <label for="password">Wachtwoord
                         <input type="password" id="password" placeholder="******">
                     </label>
-                    <button type="submit" id="submit-button">Registreer</button>
+                    <button type="submit" class="submit-button" id="submit-button">Registreer</button>
                 </form>
             </div>
             <div class="form login">
@@ -61,7 +58,7 @@
                     <label for="signin-password">Wachtwoord
                       <input type="password" id="signin-password" placeholder="******">
                     </label>
-                    <button type="submit" id="submit-button">Log in</button>
+                    <button type="submit" class="submit-button" id="submit-button">Log in</button>
                 </form>
             </div>
             <div class="form gastlogin">
@@ -79,16 +76,14 @@
                     <label for="number">Telefoonnummer
                         <input type="tel" id="number" placeholder="+32">
                     </label>
-                    <button type="submit" id="submit-button">Inloggen als gast</button>
+                    <button type="submit" class="submit-button" id="submit-button">Inloggen als gast</button>
                 </form>
             </div>
         </section>
         <div class="pingpong">
             <img src="../assets/images/pingpong-home-page 2.png" alt="pingpong pallet">
         </div>
-        <a href="../views/home.html" id="home">Home pagina, deze verwijderen!!!!</a>
     </div>
-
 
     <script type="module" src="../js/auth.js"></script>
 </body>

@@ -85,58 +85,7 @@ async function loadProfile(user) {
 
 async function saveProfile(event) {
   event.preventDefault();
-
-  if (!currentUser) return;
-
-  const formData = new FormData(accountForm);
-  const profileUpdates = {
-    id: currentUser.id,
-    first_name: formData.get("first_name")?.trim(),
-    last_name: formData.get("last_name")?.trim(),
-  };
-
-  if (currentProfile && "username" in currentProfile) {
-    profileUpdates.username = formData.get("username")?.trim();
-  }
-
-  if (currentProfile && "phone" in currentProfile) {
-    const phoneValue = formData.get("phone")?.trim();
-    profileUpdates.phone = phoneValue?.includes("*") ? currentPhone : phoneValue;
-  }
-
-  if (currentProfile && "phone_number" in currentProfile) {
-    const phoneValue = formData.get("phone")?.trim();
-    profileUpdates.phone_number = phoneValue?.includes("*") ? currentPhone : phoneValue;
-  }
-
-  const email = formData.get("email")?.trim();
-  const password = formData.get("password")?.trim();
-  const authUpdates = {};
-
-  if (email && email !== currentUser.email) authUpdates.email = email;
-  if (password && password !== "****") authUpdates.password = password;
-
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .upsert(profileUpdates);
-
-  if (profileError) {
-    alert("Je account kon niet opgeslagen worden.");
-    console.error("saveProfile error:", profileError);
-    return;
-  }
-
-  if (Object.keys(authUpdates).length > 0) {
-    const { error: authError } = await supabase.auth.updateUser(authUpdates);
-    if (authError) {
-      alert("Je login gegevens konden niet opgeslagen worden.");
-      console.error("save auth error:", authError);
-      return;
-    }
-  }
-
-  alert("Je account is opgeslagen.");
-  await initAccount();
+  // Form is now read-only, no saving allowed
 }
 
 function renderBill(orders) {

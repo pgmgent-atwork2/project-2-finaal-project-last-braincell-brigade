@@ -8,11 +8,13 @@ if (signupForm) {
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const firstName = document.getElementById('first_name').value;
+    const lastName = document.getElementById('last_name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     try {
-      await signUp(email, password);
+      await signUp(email, password, firstName, lastName);
       alert('Registered successfully! Please log in.');
       window.location.href = '/src/views/login.html';
     } catch (err) {

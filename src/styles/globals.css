@@ -27,7 +27,7 @@ button:focus-visible {
 /* ── Top bar ─────────────────────────────────────────────── */
 .top-bar {
   position: sticky;
-  top: 8vh;
+  top: 4vh;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -204,7 +204,6 @@ button:focus-visible {
 
 .footer-paddles {
   position: absolute;
-  top: 1vh;
   left: 5vw;
 }
 
@@ -254,7 +253,7 @@ button:focus-visible {
   width: 70vw;
   display: flex;
   position: absolute;
-  top: 78.8vh;
+  bottom: 0;
   left: 29vw;
   justify-content: end;
   border-radius: 100px 0 0 0;
