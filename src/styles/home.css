@@ -1,3 +1,7 @@
+.top-bar {
+  margin-top: .5vh;
+}
+
 .hero-section {
   margin: -3rem 1rem 1rem;
 }
@@ -100,21 +104,22 @@
   position: absolute;
   width: auto;
   height: auto;
-  top: 80%;
-  right: -2vw;
+  top: 83%;
+  right: 0;
   transform: translateY(-50%);
   transition: 1.5s;
   z-index: 10;
 }
 
 .about-paddle img {
-  width: 25vw;
+  width: 22.5vw;
   height: auto;
 }
 
 .about-paddle:hover {
-  transform: translateY(-50%) rotate(-15deg);
+  transform: translateY(-50%) rotate(-5deg);
   transform-origin: 70%;
+  right: 1.4vw;
 }
 
 .board-section {
@@ -222,11 +227,9 @@
   display: none;
 }
 
-/* ── Media Queries ─────────────────────────────────────────── */
-
 @media (max-width: 768px) {
   .hero-section {
-    margin: -2rem auto 1rem;
+    margin: 1rem auto 1rem;
   }
 
   .hero-card {
@@ -273,15 +276,14 @@
 
   .about-paddle {
     position: absolute;
-    bottom: -26%;
-    top: auto;
+    bottom: 8%;
     right: auto;
-    left: 66%;
+    right: -5vw;
     margin-top: 2vh;
   }
 
   .about-paddle img {
-    width: 40vw;
+    width: 45vw;
     display: block;
     margin: 0 auto;
   }
@@ -369,5 +371,9 @@
     color: var(--grey-100);
     display: flex;
     align-items: center;
+  }
+
+  #communicatieverantwoordelijke {
+    font-size: 4.4vw;
   }
 }

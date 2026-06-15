@@ -22,6 +22,7 @@ body {
 
 .form {
     color: var(--orange);
+    background-color: transparent;
     text-transform: capitalize;
     padding: 1.5rem;
     border: 1.5px solid var(--orange);
@@ -29,7 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 1.5vw;
-    transition: .6s;
+    transition: all .6s ease;
 }
 
 .form:hover {
@@ -37,11 +38,15 @@ body {
     color: var(--blauw);
 }
 
-.form:hover .submit-button {
+.form:hover #submit-button {
     background-color: var(--blauw);
 }
 
-.form:hover .submit-button:hover {
+#submit-button {
+    background-color: var(--blauw);
+}
+
+.form:hover #submit-button:hover {
     background-color: var(--rood);
 }
 
@@ -107,15 +112,21 @@ body {
 }
 
 .pingpong {
+    overflow: hidden;
     position: absolute;
-    right: 28vw;
-    top: 50%;
+    right: 0;
+    top: 48%;
     transform: translateY(-50%);
+    transition: all 1s ease;
 }
 
 .pingpong img {
-    width: 12vw;
+    width: 18vw;
     height: auto;
+}
+
+.pingpong:hover {
+    rotate: -5deg;
 }
 
 #home {
@@ -124,7 +135,9 @@ body {
 
 @media (max-width: 768px) {
     .login-wrapper {
-        margin: -1.5rem;
+        min-height: 100vh;
+        height: auto;
+        padding: 1.2rem;
     }
 
     .login-page {
