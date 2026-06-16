@@ -67,12 +67,6 @@ body {
     margin-top: -4rem;
 }
 
-.heading-form-register img {
-    width: 298px;
-    max-width: 100%;
-    height: auto;
-}
-
 #submit-button {
     color: var(--white);
     background: var(--orange);
@@ -91,12 +85,6 @@ body {
 
 .heading-form-login {
     margin-top: -3vh;
-}
-
-.heading-form-login img {
-    width: 157px;
-    max-width: 100%;
-    height: auto;
 }
 
 .login form {
@@ -120,12 +108,6 @@ body {
 .heading-form-gast {
     align-self: flex-start;
     flex-shrink: 0;
-}
-
-.heading-form-gast img {
-    width: 335px;
-    max-width: 100%;
-    height: auto;
 }
 
 .guest-order-content {
