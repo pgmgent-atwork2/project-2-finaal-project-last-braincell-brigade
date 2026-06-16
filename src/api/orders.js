@@ -72,7 +72,7 @@ export async function getAccountOrders() {
 
   if (error) console.error('getAccountOrders error:', error);
   return data || [];
-}b
+}
 
 export async function getOpenOrders() {
   const { data: { user } } = await supabase.auth.getUser();
