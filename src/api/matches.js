@@ -27,3 +27,33 @@ export async function createMatch(match) {
 
     return data;
 }
+
+export async function updateMatch(id, updates) {
+    const { data, error } = await supabase
+        .from('matches')
+        .update(updates)
+        .eq('id', id)
+        .select()
+        .maybeSingle();
+
+    if (error) {
+        console.error('updateMatch error:', error);
+        return null;
+    }
+
+    return data;
+}
+
+export async function deleteMatch(id) {
+    const { error } = await supabase
+        .from('matches')
+        .delete()
+        .eq('id', id);
+
+    if (error) {
+        console.error('deleteMatch error:', error);
+        return false;
+    }
+
+    return true;
+}

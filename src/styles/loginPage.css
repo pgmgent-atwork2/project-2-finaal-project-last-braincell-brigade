@@ -182,7 +182,9 @@ body {
     }
 
     .heading-form-register svg,
-    .heading-form-gast svg {
+    .heading-form-register img,
+    .heading-form-gast svg,
+    .heading-form-gast img {
         width: 45vw;
         height: auto;
         margin-top: 3.5vh;
@@ -193,7 +195,8 @@ body {
         flex-direction: column;
     }
 
-    .heading-form-login svg {
+    .heading-form-login svg,
+    .heading-form-login img {
         width: 30vw;
         height: auto;
         margin-left: 50%;
@@ -212,7 +215,8 @@ body {
         order: 3;
     }
 
-    .heading-form-gast svg {
+    .heading-form-gast svg,
+    .heading-form-gast img {
         margin-top: -1vh;
     }
 

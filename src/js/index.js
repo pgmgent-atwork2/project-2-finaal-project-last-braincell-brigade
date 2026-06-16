@@ -8,7 +8,6 @@ async function init() {
 
 init();
 
-
 const menuBtn = document.getElementById("menuBtn");
 const sideMenu = document.getElementById("sideMenu");
 const closeBtn = document.getElementById("closeBtn");

@@ -110,6 +110,17 @@ export async function getAllOpenOrders() {
   return data || [];
 }
 
+export async function getAllAccountOrders() {
+  const { data, error } = await supabase
+    .from('orders')
+    .select('*, order_items(*, drinks(name, price, image_url)), profiles(first_name, last_name)')
+    .eq('status', 'account')
+    .order('updated_at', { ascending: false });
+
+  if (error) console.error('getAllAccountOrders error:', error);
+  return data || [];
+}
+
 export async function addDrinkToOrder(orderId, drink, quantity = 1) {
   const { data: existing, error: selectError } = await supabase
     .from('order_items')
