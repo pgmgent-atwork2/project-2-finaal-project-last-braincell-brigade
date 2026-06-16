@@ -133,34 +133,13 @@
   position: relative;
 }
 
-.red-polygon {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 .board-title {
-  position: absolute;
-  left: 50%;
-  top: 18vh;
-  transform: translateX(-50%);
-  font-size: 2.5vw;
+  display: flex;
+  justify-content: center;
+  font-size: 4vw;
   font-weight: 800;
-  color: var(--white);
+  color: var(--black);
   letter-spacing: .02rem;
-}
-
-.left-list-polygon,
-.right-list-polygon {
-  position: absolute;
-  top: 2%;
-  left: 50%;
-  width: 46%;
-  height: 100%;
-}
-
-.left-list-polygon {
-  transform: translateX(-100%);
 }
 
 .board-body {
@@ -237,10 +216,13 @@
     padding: 1rem;
   }
 
+  .hero-paddle {
+    width: auto;
+  }
+
   .hero-paddle--left img {
     width: auto;
     height: 40vh;
-    margin-left: -20vw;
     margin-top: -5vh;
   }
 
