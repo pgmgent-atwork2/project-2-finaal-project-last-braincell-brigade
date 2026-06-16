@@ -14,7 +14,6 @@ export async function signUp(email, password, firstName = '', lastName = '') {
 
   if (error) throw error;
 
-  // Upsert user profile — handles case where trigger already created it
   if (data.user) {
     const { error: profileError } = await supabase
       .from('profiles')
@@ -75,7 +74,6 @@ export async function ensureProfileExists(userId) {
 
   const metadata = user.user_metadata || {};
 
-  // Upsert instead of check-then-insert — avoids race conditions and duplicate errors
   const { error: upsertError } = await supabase
     .from('profiles')
     .upsert(

@@ -85,7 +85,6 @@ async function loadProfile(user) {
 
 async function saveProfile(event) {
   event.preventDefault();
-  // Form is now read-only, no saving allowed
 }
 
 function renderBill(orders) {

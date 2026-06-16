@@ -35,6 +35,13 @@ function formatMatchDate(isoString) {
   return `${day}/${month}/${year} ${hours}u${minutes}`;
 }
 
+function isUpcomingMatch(match) {
+  if (!match.Starts) return false;
+  const matchDate = new Date(match.Starts);
+  const now = new Date();
+  return matchDate > now;
+}
+
 function matchType(match) {
   return isHome(match) ? 'thuismatch' : 'uitmatch';
 }
@@ -89,8 +96,9 @@ function renderMatches() {
   const myList = document.querySelector('#my-matches');
   if (!availableList || !myList) return;
 
-  const available = allMatches.filter(match => !myMatchIds.has(match.id));
-  const mine = allMatches.filter(match => myMatchIds.has(match.id));
+  const upcomingMatches = allMatches.filter(isUpcomingMatch);
+  const available = upcomingMatches.filter(match => !myMatchIds.has(match.id));
+  const mine = upcomingMatches.filter(match => myMatchIds.has(match.id));
 
   availableList.innerHTML = available.length
     ? available.map(availableMatchRow).join('')
@@ -116,7 +124,8 @@ function renderMatches() {
 async function handleRegister(matchId, reserve) {
   try {
     await registerForMatch(matchId, reserve);
-    myMatchIds.add(matchId);
+    const registrations = await getMyRegistrations();
+    myMatchIds = new Set(registrations);
     renderMatches();
   } catch (error) {
     console.error('Could not register for match:', error);
@@ -127,7 +136,8 @@ async function handleRegister(matchId, reserve) {
 async function handleCancel(matchId) {
   try {
     await unregisterFromMatch(matchId);
-    myMatchIds.delete(matchId);
+    const registrations = await getMyRegistrations();
+    myMatchIds = new Set(registrations);
     renderMatches();
   } catch (error) {
     console.error('Could not cancel match availability:', error);

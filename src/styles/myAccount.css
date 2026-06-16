@@ -432,35 +432,47 @@ body {
 @media (max-width: 1050px) {
     .account-shell {
         height: auto;
-        min-height: calc(100vh - 44px);
+        min-height: auto;
         grid-template-rows: auto auto;
         overflow: visible;
+        padding: 130px 30px 44px;
     }
 
     .account-section {
         overflow: visible;
+        padding: 14px 24px 18px;
     }
 
-    .profile-layout,
+    .profile-layout {
+        height: auto;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
     .bill-layout {
         height: auto;
+        min-height: auto;
+        grid-template-columns: 1fr;
     }
 
-    .profile-layout,
-    .bill-layout {
-        grid-template-columns: 1fr;
+    .bill-list {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .history-panel ul {
+        max-height: none;
+        overflow-y: visible;
     }
 
     .account-form {
         grid-template-columns: 1fr;
     }
 
-    .profile-actions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .bill-history {
         grid-template-columns: 1fr;
+        padding: 12px;
     }
 }
 

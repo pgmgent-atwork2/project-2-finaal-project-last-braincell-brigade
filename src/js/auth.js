@@ -32,7 +32,6 @@ if (signinForm) {
 
     try {
       await signIn(email, password);
-      alert('Signed in successfully!');
       window.location.href = '/src/views/home.html';
     } catch (err) {
       alert(err.message);

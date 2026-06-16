@@ -97,18 +97,43 @@ body {
     text-align: left;
 }
 
-.gastlogin,
-.gastlogin input {
-    text-align: end;
+.guest-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
 }
 
-.gastlogin input {
-    width: 85%;
-    justify-self: self-end;
+.heading-form-gast {
+    align-self: flex-start;
+    flex-shrink: 0;
 }
 
-.gastlogin form {
-    margin-top: -7vh;
+.guest-order-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.guest-order-content p {
+    margin: 0;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+.guest-order-content a {
+    text-decoration: none;
+    color: var(--white);
+    background: var(--orange);
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    transition: .6s;
+}
+
+.guest-order:hover .guest-order-content a {
+    background-color: var(--blauw);
 }
 
 .pingpong {
@@ -133,7 +158,7 @@ body {
     color: var(--rood);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .login-wrapper {
         min-height: 100vh;
         height: auto;
@@ -152,8 +177,7 @@ body {
     }
 
     .register input,
-    .login input,
-    .gastlogin input {
+    .login input {
         width: 100%;
     }
 
@@ -184,7 +208,7 @@ body {
         font-size: 1rem;
     }
 
-    .gastlogin {
+    .guest-order {
         order: 3;
     }
 
@@ -192,8 +216,24 @@ body {
         margin-top: -1vh;
     }
 
-    .gastlogin form {
-        margin-top: -1.5vh;
+    .guest-order {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .guest-order-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .guest-order-content p {
+        font-size: 1rem;
+    }
+
+    .guest-order-content a {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
     }
 
     .form {
