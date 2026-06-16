@@ -3,7 +3,7 @@ import { supabase } from "../../backend/config/supabaseClient.js";
 export async function getUsers() {
     const { data, error } = await supabase
         .from("profiles")
-        .select("id, first_name, last_name")
+        .select("*")
         .order("first_name");
 
     if (error) {
@@ -17,7 +17,7 @@ export async function getUsers() {
 export async function getAllProfiles() {
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, first_name, last_name')
+    .select('*')
     .order('last_name');
 
   if (error) {
@@ -26,4 +26,34 @@ export async function getAllProfiles() {
   }
 
   return data;
+}
+
+export async function updateProfile(id, updates) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .update(updates)
+    .eq('id', id)
+    .select()
+    .maybeSingle();
+
+  if (error) {
+    console.error('updateProfile error:', error);
+    return null;
+  }
+
+  return data;
+}
+
+export async function deleteProfile(id) {
+  const { error } = await supabase
+    .from('profiles')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error('deleteProfile error:', error);
+    return false;
+  }
+
+  return true;
 }

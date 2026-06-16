@@ -45,6 +45,20 @@ export async function updateDrink(id, updates) {
     return data;
 }
 
+export async function deleteDrink(id) {
+    const { error } = await supabase
+        .from('drinks')
+        .delete()
+        .eq('id', id);
+
+    if (error) {
+        console.error(error);
+        return false;
+    }
+
+    return true;
+}
+
 const BUCKET = 'drinks';
 
 export async function uploadDrinkImage(file, drinkId) {

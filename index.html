@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Login page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/tokens.css" />
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/globals.css" />
+    <link rel="stylesheet" href="./src/styles/loginPage.css" />
 </head>
-<body>
-    <a href="./src/views/login.html">Login</a>
 
-    <script type="module" src="./src/js/index.js"></script>
+<body>
+    <div class="login-wrapper">
+        <section class="login-page">
+            <div class="form register">
+                <div class="heading-form-register">
+                    <img src="./src/assets/images/Registreren.png" alt="Registreren">
+                </div>
+                <form id="signup-form">
+                    <label for="first_name">Voornaam
+                        <input type="text" id="first_name" placeholder="Voornaam">
+                    </label>
+                    <label for="last_name">Achternaam
+                        <input type="text" id="last_name" placeholder="Achternaam">
+                    </label>
+                    <label for="email">E-mail
+                        <input type="email" id="email" placeholder="user.example@gmail.com">
+                    </label>
+                    <label for="password">Wachtwoord
+                        <input type="password" id="password" placeholder="******">
+                    </label>
+                    <button type="submit" id="submit-button">Registreer</button>
+                </form>
+            </div>
+            <div class="form login">
+                <div class="heading-form-login">
+                    <img src="./src/assets/images/Log in.png" alt="Log in">
+                </div>
+                <form id="signin-form">
+                    <label for="signin-email">E-mail
+                        <input type="email" id="signin-email" placeholder="user.example@gmail.com">
+                    </label>
+                    <label for="signin-password">Wachtwoord
+                        <input type="password" id="signin-password" placeholder="******">
+                    </label>
+                    <button type="submit" class="submit-button" id="submit-button">Log in</button>
+                </form>
+            </div>
+            <div class="form guest-order">
+                <div class="heading-form-gast">
+                    <img src="./src/assets/images/Log in als gast.png" alt="Log in als gast">
+                </div>
+                <div class="guest-order-content">
+                    <p>Order drinks als gast</p>
+                    <a href="./src/views/drinks.html" class="submit-button">Order now</a>
+                </div>
+            </div>
+        </section>
+        <div class="pingpong">
+            <img src="./src/assets/images/pingpong-login.png" alt="pingpong pallet">
+        </div>
+    </div>
+
+    <script type="module" src="./src/js/auth.js"></script>
 </body>
+
 </html>

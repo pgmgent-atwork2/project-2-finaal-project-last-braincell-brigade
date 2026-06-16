@@ -67,6 +67,12 @@ body {
     margin-top: -4rem;
 }
 
+.heading-form-register img {
+    width: 298px;
+    max-width: 100%;
+    height: auto;
+}
+
 #submit-button {
     color: var(--white);
     background: var(--orange);
@@ -85,6 +91,12 @@ body {
 
 .heading-form-login {
     margin-top: -3vh;
+}
+
+.heading-form-login img {
+    width: 157px;
+    max-width: 100%;
+    height: auto;
 }
 
 .login form {
@@ -108,6 +120,12 @@ body {
 .heading-form-gast {
     align-self: flex-start;
     flex-shrink: 0;
+}
+
+.heading-form-gast img {
+    width: 335px;
+    max-width: 100%;
+    height: auto;
 }
 
 .guest-order-content {
@@ -182,7 +200,9 @@ body {
     }
 
     .heading-form-register svg,
-    .heading-form-gast svg {
+    .heading-form-register img,
+    .heading-form-gast svg,
+    .heading-form-gast img {
         width: 45vw;
         height: auto;
         margin-top: 3.5vh;
@@ -193,7 +213,8 @@ body {
         flex-direction: column;
     }
 
-    .heading-form-login svg {
+    .heading-form-login svg,
+    .heading-form-login img {
         width: 30vw;
         height: auto;
         margin-left: 50%;
@@ -212,7 +233,8 @@ body {
         order: 3;
     }
 
-    .heading-form-gast svg {
+    .heading-form-gast svg,
+    .heading-form-gast img {
         margin-top: -1vh;
     }
 

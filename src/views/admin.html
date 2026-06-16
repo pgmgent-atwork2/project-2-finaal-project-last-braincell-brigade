@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../styles/tokens.css">
   <link rel="stylesheet" href="../styles/reset.css">
   <link rel="stylesheet" href="../styles/globals.css">
@@ -12,85 +18,154 @@
 </head>
 
 <body>
-  <div class="page">
+  <div class="admin-page">
+    <aside class="admin-sidebar" aria-label="Admin sections">
+      <h1>Mijn Admin</h1>
+      <button class="admin-nav active" type="button" data-admin-tab="orderpage">orderpage</button>
+      <button class="admin-nav" type="button" data-admin-tab="accountpage">account page</button>
+      <button class="admin-nav" type="button" data-admin-tab="planningpage">planning page</button>
+      <a class="admin-back-link" href="./home.html">Terug naar site</a>
+    </aside>
 
-    <header class="top-bar">
-      <div class="logo-mark">
-        <img src="../assets/images/HNO_Assenede_logo.png" alt="logo van HNO Assenede">
-      </div>
-      <nav class="navigation" aria-label="Primary">
-        <a class="tab" href="./home.html">Home</a>
-        <a class="tab active" href="#" aria-current="page">Admin dashboard</a>
-      </nav>
-    </header>
+    <main class="admin-editor">
+      <section class="editor-panel active" data-admin-panel="orderpage" aria-labelledby="orderpage-heading">
+        <div class="order-admin">
+          <section class="order-list-panel" aria-labelledby="orderpage-heading">
+            <h2 id="orderpage-heading">order page items</h2>
+            <div id="admin-drinks-list" class="admin-drinks-list" aria-live="polite"></div>
+            <button id="admin-add-drink" class="order-add-btn" type="button">Add item</button>
+          </section>
 
-    <main>
+          <section class="order-detail-panel" aria-label="Selected drink editor">
+            <div class="drink-preview-card">
+              <img id="admin-drink-preview" src="../assets/images/image-mandje.png" alt="Selected drink">
+              <label class="image-edit-button" for="admin-drink-image" aria-label="Change drink image">&#8599;</label>
+              <input id="admin-drink-image" class="sr-only" type="file" accept="image/*">
+            </div>
 
-      <section class="section" aria-labelledby="quick-actions-heading">
-        <div class="section-header">
-          <h2 id="quick-actions-heading">Quick Actions</h2>
-          <p>Use the controls below to manage the menu items.</p>
+            <label for="admin-drink-name" class="sr-only">Drink name</label>
+            <input id="admin-drink-name" class="order-detail-name" type="text" placeholder="Drink name">
+
+            <label for="admin-drink-price" class="sr-only">Drink price</label>
+            <input id="admin-drink-price" class="order-detail-price" type="number" step="0.01" min="0" placeholder="0.00">
+
+            <label for="admin-drink-promo" class="sr-only">Promo</label>
+            <select id="admin-drink-promo">
+              <option value="">Promo</option>
+              <option value="true">In promo</option>
+              <option value="false">Niet in promo</option>
+            </select>
+
+            <label for="admin-drink-category" class="sr-only">Categorie</label>
+            <select id="admin-drink-category">
+              <option value="">Categorie</option>
+            </select>
+
+            <button id="admin-update-drink" class="order-edit-btn" type="button">Edit item</button>
+            <button id="admin-remove-drink" class="order-remove-btn" type="button">Remove item</button>
+
+            <div class="order-category-panel">
+              <h3>categorie&euml;n</h3>
+              <div id="admin-category-list" class="admin-category-list"></div>
+            </div>
+          </section>
         </div>
+      </section>
 
-        <div class="card-list">
 
-          <div class="card-row">
-            <a class="card" href="./drinks-editor.html">
-              <div class="card-image">🥤</div>
-              <div>
-                <h3>Change drinks</h3>
-                <p>Change drinks in the drink manager page</p>
-              </div>
-            </a>
-          
-            <a class="card" href="./orders.html">
-              <div class="card-image">📦</div>
-              <div>
-                <h3>Check orders</h3>
-                <p>See paid and unpaid orders</p>
-              </div>
-            </a>
+      <section class="editor-panel" data-admin-panel="accountpage" aria-labelledby="accountpage-heading">
+        <div class="account-admin">
+          <h2 id="accountpage-heading">Accounts</h2>
+
+          <div class="account-search">
+            <label for="admin-account-search">Zoek account op naam</label>
+            <input id="admin-account-search" type="search" placeholder="Naam familienaam">
+            <button id="admin-account-search-btn" type="button">Zoeken</button>
           </div>
 
-          <div class="card-row">
-            <a class="card" href="./users.html">
-              <div class="card-image">👥</div>
-              <div>
-                <h3>See users</h3>
-                <p>View all users and their availability</p>
-              </div>
-            </a>
-          
-            <a class="card" href="./matches.html">
-              <div class="card-image">🏓</div>
-              <div>
-                <h3>Upcoming matches</h3>
-                <p>Create matches players can join</p>
-              </div>
-            </a>
-          </div>
+          <div id="admin-account-list" class="admin-account-list" aria-live="polite"></div>
 
+          <section class="account-detail-card" aria-label="Account details">
+            <div class="account-detail-grid">
+              <label for="admin-account-first-name">Naam:
+                <input id="admin-account-first-name" type="text" placeholder="......">
+              </label>
+              <label for="admin-account-username">Username:
+                <input id="admin-account-username" type="text" placeholder="......">
+              </label>
+              <label for="admin-account-last-name">Familienaam:
+                <input id="admin-account-last-name" type="text" placeholder="......">
+              </label>
+              <label for="admin-account-phone">Telefoonnummer:
+                <input id="admin-account-phone" type="text" placeholder="......">
+              </label>
+              <label for="admin-account-email">Email:
+                <input id="admin-account-email" type="email" placeholder="......">
+              </label>
+              <label for="admin-account-password">Wachtwoord:
+                <input id="admin-account-password" type="text" value="••••••" disabled>
+              </label>
+            </div>
+            <button id="admin-account-save" class="account-save-btn" type="button">Account bijwerken</button>
+          </section>
+
+          <h3 class="account-bills-title">Openstaande rekeningen</h3>
+          <div id="admin-account-bills" class="admin-account-bills" aria-live="polite"></div>
+          <button id="admin-account-reminder" class="account-reminder-btn" type="button">Herinneringsmelding versturen</button>
+        </div>
+      </section>
+
+      <section class="editor-panel" data-admin-panel="planningpage" aria-labelledby="planningpage-heading">
+        <div class="planning-admin">
+          <section class="planning-match-list" aria-labelledby="planningpage-heading">
+            <h2 id="planningpage-heading">Matchen</h2>
+            <div id="admin-match-list" class="admin-match-list" aria-live="polite"></div>
+          </section>
+
+          <section class="planning-add-match" aria-labelledby="planning-add-heading">
+            <h3 id="planning-add-heading">Match toevoegen</h3>
+            <div class="planning-add-card">
+              <div class="planning-teams">
+                <img src="../assets/images/HNO_Assenede_logo.png" alt="HNO Assenede">
+                <strong>vs</strong>
+                <span class="planning-opponent-mark" aria-hidden="true">↔</span>
+              </div>
+
+              <div class="planning-match-form">
+                <h4>Match info</h4>
+                <label for="admin-match-date">Datum:
+                  <input id="admin-match-date" type="date">
+                </label>
+                <label for="admin-match-time">Uur:
+                  <input id="admin-match-time" type="time">
+                </label>
+                <label for="admin-match-opponent">Tegenstander:
+                  <input id="admin-match-opponent" type="text" placeholder="Opitterkiezel">
+                </label>
+                <label for="admin-match-location">Locatie:
+                  <input id="admin-match-location" type="text" placeholder="Opitterkiezel 240, 3960 Bree">
+                </label>
+                <label for="admin-match-home">Type:
+                  <select id="admin-match-home">
+                    <option value="home">Thuismatch</option>
+                    <option value="away">Uitmatch</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <button id="admin-save-match" class="planning-save-btn" type="button">Voeg match toe</button>
+          </section>
         </div>
       </section>
 
     </main>
-
-    <footer class="admin-footer">
-      <div class="admin-footer-content">
-        <div class="admin-footer-branding">
-          <img src="../assets/images/HNO_Assenede_logo.png" alt="HNO Assenede logo" class="admin-footer-logo">
-          <div>
-            <p>HNO Assenede</p>
-            <p>Made by <strong>The Last Braincell Brigade</strong></p>
-          </div>
-        </div>
-        <p class="admin-footer-copyright">© 2026 The Last Braincell Brigade</p>
-      </div>
-    </footer>
-
   </div>
 
   <script type="module" src="../js/admin.js"></script>
+  <script type="module" src="../js/adminOrder.js"></script>
+  <script type="module" src="../js/adminAccounts.js"></script>
+  <script type="module" src="../js/adminPlanning.js"></script>
   <script type="module" src="../js/auth.js"></script>
 </body>
+
 </html>

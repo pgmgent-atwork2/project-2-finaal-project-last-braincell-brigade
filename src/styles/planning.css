@@ -9,15 +9,17 @@ body {
   }
   
   .top-bar {
-    margin-top: 5vh;
+    margin-top: .5vh;
+    width: min(calc(97vw - 120px), 1260px);
+    max-width: calc(100% - 120px);
   }
   
   main {
     width: min(97vw, 1380px);
     height: min(900px, calc(100vh - 36px));
     min-height: 720px;
-    margin-top: -98px;
-    padding: 132px 50px 36px;
+    margin-top: -4rem;
+    padding: 10.5rem 50px 36px;
     display: flex;
     flex-direction: column;
     gap: 34px;
