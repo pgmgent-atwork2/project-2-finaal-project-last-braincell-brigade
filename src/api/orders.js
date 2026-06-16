@@ -88,7 +88,6 @@ export async function getOpenOrders() {
   return data || [];
 }
 
-// Admin: fetch closed orders from ALL users
 export async function getAllClosedOrders() {
   const { data, error } = await supabase
     .from('orders')
@@ -100,7 +99,6 @@ export async function getAllClosedOrders() {
   return data || [];
 }
 
-// Admin: fetch open orders from ALL users
 export async function getAllOpenOrders() {
   const { data, error } = await supabase
     .from('orders')
