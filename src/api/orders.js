@@ -67,12 +67,12 @@ export async function getAccountOrders() {
     .from('orders')
     .select('*, order_items(*, drinks(name, price, image_url)), profiles(first_name, last_name)')
     .eq('profile_id', user.id)
-    .eq('status', 'account')
+    .eq('status', 'open') 
     .order('updated_at', { ascending: false });
 
   if (error) console.error('getAccountOrders error:', error);
   return data || [];
-}
+}b
 
 export async function getOpenOrders() {
   const { data: { user } } = await supabase.auth.getUser();

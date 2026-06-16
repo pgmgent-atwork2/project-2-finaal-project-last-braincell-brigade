@@ -16,7 +16,7 @@ let accountTotal = 0;
 let currentPhone = "";
 
 function formatPrice(price) {
-  return `€${Number(price).toFixed(2).replace(".", ",")}`;
+  return `€${Number(price || 0).toFixed(2).replace(".", ",")}`;
 }
 
 function formatDate(dateString) {
@@ -41,7 +41,6 @@ function maskPhone(value) {
   const digits = phone.replace(/\D/g, "");
 
   if (digits.length <= 4) return phone || "";
-
   return `${digits.slice(0, 2)}${"*".repeat(Math.max(digits.length - 4, 4))}${digits.slice(-2)}`;
 }
 
@@ -56,15 +55,15 @@ function fillAccountForm(profile, user) {
   setInput("last_name", profile?.last_name);
   setInput("first_name", profile?.first_name);
   setInput("username", profile?.username || user?.email?.split("@")[0]);
-  setInput("phone", maskPhone(currentPhone));
   setInput("email", user?.email);
   setInput("password", "****");
 
   if (usernameLabel) {
-    usernameLabel.textContent = profile?.username
-      || profile?.first_name
-      || user?.email?.split("@")[0]
-      || "Mijn account";
+    usernameLabel.textContent =
+      profile?.username ||
+      profile?.first_name ||
+      user?.email?.split("@")[0] ||
+      "Mijn account";
   }
 }
 
@@ -83,20 +82,18 @@ async function loadProfile(user) {
   return data;
 }
 
-async function saveProfile(event) {
-  event.preventDefault();
-}
-
 function renderBill(orders) {
-  const items = orders.flatMap(order => {
-    return order.order_items.map(item => ({
+  const items = (orders || []).flatMap(order =>
+    (order.order_items || []).map(item => ({
       ...item,
       orderDate: order.updated_at || order.created_at,
-    }));
-  });
+    }))
+  );
 
   accountTotal = items.reduce((sum, item) => {
-    return sum + Number(item.price_at_order) * item.quantity;
+    const price = Number(item.price_at_order || 0);
+    const qty = Number(item.quantity || 0);
+    return sum + price * qty;
   }, 0);
 
   if (totalLabel) totalLabel.textContent = formatPrice(accountTotal);
@@ -115,16 +112,25 @@ function renderBill(orders) {
   }
 
   billList.innerHTML = items.map(item => {
-    const name = item.drinks?.name || "Drankje";
-    const image = item.drinks?.image_url;
-    const price = Number(item.price_at_order) * item.quantity;
+    const name =
+      item.drinks?.name ||
+      item.drink?.name ||
+      "Drankje";
+
+    const image =
+      item.drinks?.image_url ||
+      item.drink?.image_url;
+
+    const price = Number(item.price_at_order || 0) * Number(item.quantity || 0);
 
     return `
       <article class="bill-row">
         <span class="bill-amount">${item.quantity}</span>
+
         ${image
           ? `<img class="bill-drink-image" src="${escapeHtml(image)}" alt="${escapeHtml(name)}">`
           : '<span class="drink-image" aria-hidden="true"></span>'}
+
         <span class="drink-name">${escapeHtml(name)}</span>
         <span class="drink-price">${formatPrice(price)}</span>
       </article>
@@ -135,7 +141,7 @@ function renderBill(orders) {
 function renderHistory(orders) {
   if (!historyList) return;
 
-  if (orders.length === 0) {
+  if (!orders || orders.length === 0) {
     historyList.innerHTML = `
       <li class="history-empty-state">
         <img src="../assets/images/logout-paddles.png" alt="">
@@ -146,7 +152,11 @@ function renderHistory(orders) {
   }
 
   historyList.innerHTML = orders.map(order => {
-    const itemCount = order.order_items.reduce((sum, item) => sum + item.quantity, 0);
+    const itemCount = (order.order_items || []).reduce(
+      (sum, item) => sum + (item.quantity || 0),
+      0
+    );
+
     const date = order.updated_at || order.created_at;
 
     return `
@@ -158,7 +168,7 @@ function renderHistory(orders) {
 }
 
 async function payAccountBill() {
-  if (accountOrders.length === 0 || accountTotal <= 0) return;
+  if (!accountOrders.length || accountTotal <= 0) return;
 
   const orderIds = accountOrders.map(order => order.id);
   const firstOrderId = orderIds[0];
@@ -183,7 +193,7 @@ async function logout() {
 
   if (error) {
     alert("Uitloggen is niet gelukt.");
-    console.error("logout error:", error);
+    console.error(error);
     return;
   }
 
@@ -199,15 +209,17 @@ async function initAccount() {
   }
 
   currentUser = user;
+
   currentProfile = await loadProfile(user);
   fillAccountForm(currentProfile, user);
 
   accountOrders = await getAccountOrders();
+
   renderBill(accountOrders);
   renderHistory(accountOrders);
 }
 
-accountForm?.addEventListener("submit", saveProfile);
+accountForm?.addEventListener("submit", e => e.preventDefault());
 payButton?.addEventListener("click", payAccountBill);
 logoutButton?.addEventListener("click", logout);
 
