@@ -430,16 +430,6 @@ body {
 }
 
 @media (max-width: 1050px) {
-    body {
-        height: auto;
-        overflow: visible;
-    }
-
-    .account-page {
-        height: auto;
-        overflow: visible;
-    }
-
     .account-shell {
         height: auto;
         min-height: auto;

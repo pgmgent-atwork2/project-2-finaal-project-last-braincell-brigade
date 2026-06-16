@@ -1,5 +1,5 @@
 import { supabase } from "../../backend/config/supabaseClient.js";
-import { getAccountOrders, startGuestPayment, closeOrder } from "../api/orders.js";
+import { getAccountOrders, startGuestPayment } from "../api/orders.js";
 
 const accountForm = document.querySelector("#account-form");
 const usernameLabel = document.querySelector("[data-account-username]");
@@ -164,8 +164,6 @@ async function payAccountBill() {
   const firstOrderId = orderIds[0];
 
   try {
-    await Promise.all(orderIds.map(id => closeOrder(id)));
-
     await startGuestPayment(
       firstOrderId,
       accountTotal.toFixed(2),

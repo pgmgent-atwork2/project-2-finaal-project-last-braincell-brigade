@@ -213,8 +213,7 @@ button:focus-visible {
 .footer-paddles {
   position: absolute;
   left: 5vw;
-  top: 10%;
-  pointer-events: none;
+  top: 0;
 }
 
 .footer-paddles img {
@@ -236,7 +235,7 @@ button:focus-visible {
 
 .footer-block-title-nav {
   position: absolute;
-  left: 22vw;
+  left: 30vw;
 }
 
 .contact-content {
@@ -291,6 +290,7 @@ button:focus-visible {
   .footer-paddles {
     position: relative;
     top: auto;
+    left: auto;
     order: 1;
     margin-top: -2rem;
   }

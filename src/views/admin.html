@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard</title>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,32 +18,57 @@
 </head>
 
 <body>
-  <div class="page">
+  <div class="admin-page">
+    <aside class="admin-sidebar" aria-label="Admin sections">
+      <h1>Mijn Admin</h1>
+      <button class="admin-nav active" type="button" data-admin-tab="orderpage">orderpage</button>
+      <button class="admin-nav" type="button" data-admin-tab="accountpage">account page</button>
+      <button class="admin-nav" type="button" data-admin-tab="planningpage">planning page</button>
+      <a class="admin-back-link" href="./home.html">Terug naar site</a>
+    </aside>
 
-    <header class="top-bar">
-      <div class="logo-mark">
-        <img src="../assets/images/HNO_Assenede_logo.png" alt="logo van HNO Assenede">
-      </div>
-      <nav class="navigation" aria-label="Primary">
-        <a class="tab" href="./home.html">Home</a>
-        <a class="tab active" href="#" aria-current="page">Admin dashboard</a>
-      </nav>
-    </header>
-    <header class="side-bar">
-      <button id="menuBtn" class="menu" type="button" aria-label="Open menu">☰</button>
-      <nav id="sideMenu" class="side-menu" aria-label="Mobile navigation">
-        <button id="closeBtn" class="close-menu" type="button" aria-label="Close menu">✕</button>
-        <a class="side" href="./home.html">Home</a>
-        <a class="side active" href="#" aria-current="page">Admin dashboard</a>
-      </nav>
-    </header>
+    <main class="admin-editor">
+      <section class="editor-panel active" data-admin-panel="orderpage" aria-labelledby="orderpage-heading">
+        <div class="order-admin">
+          <section class="order-list-panel" aria-labelledby="orderpage-heading">
+            <h2 id="orderpage-heading">order page items</h2>
+            <div id="admin-drinks-list" class="admin-drinks-list" aria-live="polite"></div>
+            <button id="admin-add-drink" class="order-add-btn" type="button">Add item</button>
+          </section>
 
-    <main>
+          <section class="order-detail-panel" aria-label="Selected drink editor">
+            <div class="drink-preview-card">
+              <img id="admin-drink-preview" src="../assets/images/image-mandje.png" alt="Selected drink">
+              <label class="image-edit-button" for="admin-drink-image" aria-label="Change drink image">&#8599;</label>
+              <input id="admin-drink-image" class="sr-only" type="file" accept="image/*">
+            </div>
 
-      <section class="section" aria-labelledby="quick-actions-heading">
-        <div class="section-header">
-          <h2 id="quick-actions-heading">Quick Actions</h2>
-          <p>Use the controls below to manage the menu items.</p>
+            <label for="admin-drink-name" class="sr-only">Drink name</label>
+            <input id="admin-drink-name" class="order-detail-name" type="text" placeholder="Drink name">
+
+            <label for="admin-drink-price" class="sr-only">Drink price</label>
+            <input id="admin-drink-price" class="order-detail-price" type="number" step="0.01" min="0" placeholder="0.00">
+
+            <label for="admin-drink-promo" class="sr-only">Promo</label>
+            <select id="admin-drink-promo">
+              <option value="">Promo</option>
+              <option value="true">In promo</option>
+              <option value="false">Niet in promo</option>
+            </select>
+
+            <label for="admin-drink-category" class="sr-only">Categorie</label>
+            <select id="admin-drink-category">
+              <option value="">Categorie</option>
+            </select>
+
+            <button id="admin-update-drink" class="order-edit-btn" type="button">Edit item</button>
+            <button id="admin-remove-drink" class="order-remove-btn" type="button">Remove item</button>
+
+            <div class="order-category-panel">
+              <h3>categorie&euml;n</h3>
+              <div id="admin-category-list" class="admin-category-list"></div>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -142,7 +166,6 @@
   <script type="module" src="../js/adminAccounts.js"></script>
   <script type="module" src="../js/adminPlanning.js"></script>
   <script type="module" src="../js/auth.js"></script>
-  <script type="module" src="../js/sideMenu.js"></script>
 </body>
 
 </html>

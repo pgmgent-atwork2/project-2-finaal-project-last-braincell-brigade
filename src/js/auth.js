@@ -1,28 +1,8 @@
 import { signUp, signIn, signOut } from '../../backend/services/authService.js';
-import { supabase } from "../../backend/config/supabaseClient.js";
 
 const signupForm = document.getElementById('signup-form');
 const signinForm = document.getElementById('signin-form');
 const logoutBtn = document.getElementById('logout-btn');
-const guestBtn = document.getElementById("guest-order-btn");
-
-if (guestBtn) {
-  guestBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-
-      localStorage.removeItem("guest_order_id");
-
-      window.location.href = "/src/views/drinks.html";
-
-    } catch (err) {
-      alert(err.message);
-    }
-  });
-}
 
 if (signupForm) {
   signupForm.addEventListener('submit', async (e) => {
